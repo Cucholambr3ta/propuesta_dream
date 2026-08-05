@@ -155,25 +155,16 @@
     panel.id = "panelMobile";
     panel.setAttribute("aria-hidden", "true");
 
-    var items = categorias.map(function (cat, i) {
-      var subPanelId = "acordeon-" + cat.slug;
-      var columnas = cat.columnas.map(function (col) {
-        var links = col.items.map(function (item) {
-          return '<a href="' + prefijoAssets() + 'producto.html?sku=' + encodeURIComponent(item.sku) + '">' + item.nombre + "</a>";
-        }).join("");
-        return '<p class="dl-acordeon__sub-titulo">' + col.titulo + "</p>" + links;
-      }).join("");
-
+    // Menu mobile: SOLO nombres de categoria, cada uno un link directo a
+    // categoria.html?slug=X — nunca se muestran productos ni subcategorias
+    // aqui (pedido explicito del cliente), la flecha es solo decorativa.
+    var items = categorias.map(function (cat) {
       return (
         '<li class="dl-acordeon__item">' +
-          '<button class="dl-acordeon__trigger" aria-expanded="false" aria-controls="' + subPanelId + '">' +
+          '<a class="dl-acordeon__nombre" href="' + prefijoAssets() + 'categoria.html?slug=' + cat.slug + '">' +
             cat.nombre +
             '<svg class="dl-ico dl-acordeon__flecha" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>' +
-          "</button>" +
-          '<div class="dl-acordeon__panel" id="' + subPanelId + '" hidden>' +
-            columnas +
-            '<a class="dl-acordeon__vertodo" href="' + prefijoAssets() + 'categoria.html?slug=' + cat.slug + '">Ver todo ' + cat.nombre + " →</a>" +
-          "</div>" +
+          "</a>" +
         "</li>"
       );
     }).join("");
@@ -186,7 +177,18 @@
           '<svg class="dl-ico" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
         "</button>" +
       "</div>" +
+      '<form class="dl-buscador dl-panel-mobile__buscador" id="buscadorPanelMobile" action="index.html" method="get" role="search">' +
+        '<svg class="dl-buscador__ico dl-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>' +
+        '<input type="search" name="q" placeholder="Buscar en Dreamlike..." aria-label="Buscar productos">' +
+      "</form>" +
       '<ul class="dl-acordeon" id="acordeonCategorias">' + items + "</ul>";
+
+    // Mismo autocompletar que el buscador del header (assets/js/buscador.js),
+    // enganchado aparte porque este form se crea despues del DOMContentLoaded
+    // inicial que buscador.js usa para encontrar los .dl-buscador de la pagina.
+    if (window.dlBuscador) {
+      window.dlBuscador.iniciar(panel.querySelector("#buscadorPanelMobile"));
+    }
 
     var overlay = document.createElement("div");
     overlay.className = "dl-overlay";
@@ -229,24 +231,6 @@
       if (ev.key === "Escape" && refs.panel.classList.contains("dl-panel-mobile--abierto")) {
         cerrarPanel();
       }
-    });
-
-    // Acordeon: un panel abierto a la vez
-    var triggers = refs.panel.querySelectorAll(".dl-acordeon__trigger");
-    triggers.forEach(function (trigger) {
-      trigger.addEventListener("click", function () {
-        var abierto = trigger.getAttribute("aria-expanded") === "true";
-        triggers.forEach(function (t) {
-          t.setAttribute("aria-expanded", "false");
-          document.getElementById(t.getAttribute("aria-controls")).hidden = true;
-          t.classList.remove("dl-acordeon__trigger--abierto");
-        });
-        if (!abierto) {
-          trigger.setAttribute("aria-expanded", "true");
-          document.getElementById(trigger.getAttribute("aria-controls")).hidden = false;
-          trigger.classList.add("dl-acordeon__trigger--abierto");
-        }
-      });
     });
   }
 

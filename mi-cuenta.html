@@ -20,10 +20,20 @@
     <a class="dl-logo" href="index.html" aria-label="Dreamlike Electricidad — inicio">
       <img src="assets/img/logo-oscuro.svg" alt="Dreamlike Electricidad">
     </a>
-    <div class="dl-acciones" style="margin-left:auto">
+
+    <form class="dl-buscador" action="index.html" method="get" role="search">
+      <svg class="dl-buscador__ico dl-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" name="q" placeholder="Buscar en Dreamlike..." aria-label="Buscar productos">
+    </form>
+
+    <div class="dl-acciones">
       <a class="dl-cuenta" href="index.html">
         <svg class="dl-ico" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
         <span>Volver a la tienda</span>
+      </a>
+      <a class="dl-carrito" href="carrito.html" aria-label="Ver carrito">
+        <svg class="dl-ico" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1.2"/><circle cx="18" cy="21" r="1.2"/><path d="M2 3h3l2.6 12.4A2 2 0 0 0 9.5 17H18a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+        <span class="dl-carrito__n" id="carritoContador">0</span>
       </a>
     </div>
   </div>
@@ -140,7 +150,7 @@
         <article class="dl-direccion-tipo">
           <h2>Dirección de envío</h2>
           <div id="direccionEnvio"></div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -191,9 +201,14 @@
   </main>
 </div>
 
+<script src="assets/js/carrito.js"></script>
+<script src="assets/js/auth-modal.js"></script>
 <script src="assets/js/auth.js"></script>
 <script src="assets/js/categorias-fallback.js"></script>
+<script src="assets/js/productos-fallback.js"></script>
+<script src="assets/js/buscador.js"></script>
 <script src="assets/js/mega-menu.js"></script>
+<script src="assets/js/carrito-drawer.js"></script>
 <script src="assets/js/mi-cuenta.js"></script>
 <script src="assets/js/whatsapp-flotante.js"></script>
 </body>

@@ -4,6 +4,10 @@
    productos del catalogo (por nombre, sku o marca). Mismo patron
    fetch-con-fallback que productos-home.js. Compartido por todas las
    paginas que tienen .dl-buscador en el header.
+
+   Expone window.dlBuscador.iniciar(form) para enganchar el mismo
+   autocompletar sobre un .dl-buscador agregado despues del DOMContentLoaded
+   inicial (ej. el panel mobile, construido async por mega-menu.js).
    ========================================================================== */
 
 (function () {
@@ -83,12 +87,27 @@
       .catch(function () { return window.DL_PRODUCTOS_FALLBACK || []; });
   }
 
+  // Cache simple: si ya se cargo el catalogo para el buscador del header,
+  // reusarlo en vez de volver a pedirlo cuando se engancha el del panel mobile.
+  var productosCache = null;
+  function conProductos(cb) {
+    if (productosCache) { cb(productosCache); return; }
+    cargarProductos().then(function (productos) {
+      productosCache = productos;
+      cb(productos);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     var formularios = document.querySelectorAll(".dl-buscador");
     if (!formularios.length) return;
 
-    cargarProductos().then(function (productos) {
+    conProductos(function (productos) {
       formularios.forEach(function (form) { initBuscador(form, productos); });
     });
   });
+
+  window.dlBuscador = {
+    iniciar: function (form) { conProductos(function (productos) { initBuscador(form, productos); }); }
+  };
 })();
