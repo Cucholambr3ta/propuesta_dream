@@ -1,0 +1,434 @@
+/* ==========================================================================
+   Dreamlike — panel.css
+   Estilos compartidos: login, mi-cuenta, admin.
+   Depende de base.css (tokens de color/tipografia).
+   ========================================================================== */
+
+/* --- Layout de autenticacion (login) --------------------------------------- */
+
+.dl-auth {
+  min-height: calc(100vh - 60px);
+  display: grid;
+  place-items: center;
+  background: var(--dl-gris-fondo);
+  padding: var(--dl-space-7) var(--dl-gap);
+}
+
+.dl-auth__card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--dl-blanco);
+  border: 1px solid var(--dl-gris-borde);
+  border-radius: var(--dl-radio-lg);
+  box-shadow: var(--dl-sombra-alta);
+  padding: var(--dl-space-6);
+}
+
+.dl-auth__logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--dl-space-5);
+}
+.dl-auth__logo img { width: 170px; }
+
+.dl-auth h1 {
+  font-size: var(--dl-fs-lg);
+  text-align: center;
+  margin-bottom: var(--dl-space-1);
+}
+
+.dl-auth__sub {
+  text-align: center;
+  color: var(--dl-gris-suave);
+  font-size: var(--dl-fs-md);
+  margin-bottom: var(--dl-space-6);
+}
+
+.dl-auth__aviso {
+  background: var(--dl-azul-claro);
+  color: var(--dl-azul-oscuro);
+  border-radius: var(--dl-radio);
+  padding: var(--dl-space-3) var(--dl-space-4);
+  font-size: var(--dl-fs-sm);
+  margin-bottom: var(--dl-space-5);
+  text-align: center;
+}
+
+/* .dl-campo y .dl-auth__error viven en base.css — compartidos por TODAS las
+   paginas (incl. index/producto, que no cargan panel.css), no solo login/
+   mi-cuenta/admin. */
+
+.dl-auth__pie {
+  text-align: center;
+  font-size: var(--dl-fs-sm);
+  color: var(--dl-gris-suave);
+  margin-top: var(--dl-space-4);
+}
+
+.dl-auth__volver {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dl-space-2);
+  font-size: var(--dl-fs-sm);
+  color: var(--dl-gris-suave);
+  margin-bottom: var(--dl-space-4);
+}
+
+/* --- Layout de cuenta / admin (sidebar + contenido) ------------------------ */
+
+.dl-panel {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: var(--dl-space-6);
+  align-items: start;
+  padding: var(--dl-space-6) var(--dl-gap) var(--dl-space-8);
+  max-width: var(--dl-max);
+  margin: 0 auto;
+}
+
+.dl-panel__sidebar {
+  border: 1px solid var(--dl-borde-sutil);
+  border-radius: var(--dl-radio);
+  background: var(--dl-blanco);
+  box-shadow: var(--dl-sombra);
+  padding: var(--dl-space-5) 0;
+  position: sticky;
+  top: var(--dl-space-5);
+}
+
+.dl-panel__perfil {
+  display: flex;
+  align-items: center;
+  gap: var(--dl-space-3);
+  padding: 0 var(--dl-space-5) var(--dl-space-4);
+  margin-bottom: var(--dl-space-2);
+  border-bottom: 1px solid var(--dl-gris-borde);
+}
+
+.dl-panel__avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--dl-azul-claro);
+  color: var(--dl-azul-oscuro);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  flex: 0 0 auto;
+}
+
+.dl-panel__perfil strong { display: block; font-size: .92rem; color: #222; }
+.dl-panel__perfil span { font-size: .78rem; color: var(--dl-gris-suave); }
+
+.dl-panel__nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px;
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--dl-gris-texto);
+  border-left: 3px solid transparent;
+}
+.dl-panel__nav a:hover {
+  background: var(--dl-gris-fondo);
+  text-decoration: none;
+}
+.dl-panel__nav a.dl-activo {
+  border-left-color: var(--dl-azul);
+  background: var(--dl-azul-claro);
+  color: var(--dl-azul-oscuro);
+}
+.dl-panel__nav .dl-ico { width: 18px; height: 18px; }
+
+.dl-panel__nav button.dl-salir {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 18px;
+  font-size: .92rem;
+  font-weight: 600;
+  color: #B91C1C;
+  border-top: 1px solid var(--dl-gris-borde);
+  margin-top: 8px;
+}
+.dl-panel__nav button.dl-salir:hover { background: #FEF2F2; }
+
+/* --- Cuenta de cliente: escritorio con navegación persistente ------------- */
+
+.dl-panel--cuenta {
+  grid-template-columns: 250px minmax(0, 1fr);
+  min-height: calc(100vh - 150px);
+}
+.dl-panel--cuenta .dl-panel__sidebar {
+  padding: var(--dl-space-4) 0;
+  border-radius: var(--dl-radio-lg);
+  box-shadow: none;
+}
+.dl-panel--cuenta .dl-panel__perfil {
+  padding: 0 var(--dl-space-5) var(--dl-space-4);
+  margin-bottom: var(--dl-space-3);
+}
+.dl-panel--cuenta .dl-panel__nav { display: grid; gap: var(--dl-space-1); padding: 0 var(--dl-space-2); }
+.dl-panel--cuenta .dl-panel__nav a {
+  min-height: 48px;
+  padding: var(--dl-space-3) var(--dl-space-4);
+  border-left: 0;
+  border-radius: var(--dl-radio-sm);
+}
+.dl-panel--cuenta .dl-panel__nav a.dl-activo {
+  background: var(--dl-azul-claro);
+  color: var(--dl-azul-oscuro);
+  box-shadow: inset 3px 0 0 var(--dl-azul);
+}
+.dl-panel--cuenta .dl-panel__nav button.dl-salir {
+  margin: var(--dl-space-2) 0 0;
+  padding: var(--dl-space-3) var(--dl-space-4);
+  border-top: 1px solid var(--dl-borde-sutil);
+}
+.dl-panel__encabezado {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--dl-space-4);
+  margin-bottom: var(--dl-space-5);
+}
+.dl-panel__encabezado h1, .dl-cuenta-bienvenida h1 { margin: 0; }
+.dl-panel__eyebrow, .dl-cuenta-bienvenida__eyebrow {
+  margin: 0 0 var(--dl-space-1);
+  color: var(--dl-azul-oscuro);
+  font-size: var(--dl-fs-xs);
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.dl-cuenta-bienvenida {
+  border: 1px solid var(--dl-borde-sutil);
+  border-radius: var(--dl-radio-lg);
+  background: var(--dl-superficie-sutil);
+  padding: var(--dl-space-6);
+}
+.dl-cuenta-bienvenida h1 { font-size: clamp(2rem, 4vw, 2.75rem); }
+.dl-cuenta-bienvenida > p:last-child { max-width: 650px; margin: var(--dl-space-3) 0 0; color: var(--dl-gris-suave); }
+.dl-cuenta-accesos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--dl-space-3);
+  margin-top: var(--dl-space-5);
+}
+.dl-cuenta-accesos a {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--dl-space-3);
+  min-height: 118px;
+  padding: var(--dl-space-5);
+  border: 1px solid var(--dl-borde-sutil);
+  border-radius: var(--dl-radio);
+  color: var(--dl-gris-texto);
+  background: var(--dl-blanco);
+  transition: border-color var(--dl-trans), box-shadow var(--dl-trans), transform var(--dl-trans);
+}
+.dl-cuenta-accesos a:hover { border-color: var(--dl-azul); box-shadow: var(--dl-sombra); transform: translateY(-2px); text-decoration: none; }
+.dl-cuenta-accesos .dl-ico { width: 22px; height: 22px; color: var(--dl-azul); flex: 0 0 auto; }
+.dl-cuenta-accesos strong, .dl-cuenta-accesos small { display: block; }
+.dl-cuenta-accesos strong { color: var(--dl-texto-fuerte); margin-bottom: var(--dl-space-1); }
+.dl-cuenta-accesos small { color: var(--dl-gris-suave); font-size: var(--dl-fs-xs); line-height: 1.45; }
+.dl-panel__vacio { text-align: center; padding: var(--dl-space-6); }
+.dl-panel__vacio p { font-size: var(--dl-fs-md); color: var(--dl-gris-suave); }
+.dl-panel__ayuda { color: var(--dl-gris-suave); font-size: var(--dl-fs-sm); }
+.dl-direcciones-intro {
+  margin-bottom: var(--dl-space-4);
+  color: var(--dl-gris-suave);
+  font-size: var(--dl-fs-sm);
+}
+.dl-direcciones-intro p { margin: 0; }
+.dl-direcciones-tipos { display: grid; gap: var(--dl-space-4); }
+.dl-direccion-tipo {
+  padding: var(--dl-space-5);
+  border: 1px solid var(--dl-borde-sutil);
+  border-radius: var(--dl-radio-lg);
+  background: var(--dl-blanco);
+}
+.dl-direccion-tipo h2 {
+  margin-bottom: var(--dl-space-3);
+  font-size: var(--dl-fs-md);
+}
+.dl-direccion-tipo__agregar, .dl-direccion-tipo__editar {
+  color: var(--dl-azul-hover);
+  font-size: var(--dl-fs-lg);
+  font-weight: var(--dl-fw-medium);
+}
+.dl-direccion-tipo__editar { font-size: var(--dl-fs-sm); }
+.dl-direccion-tipo__vacio, .dl-direccion-tipo__texto {
+  margin: var(--dl-space-1) 0 0;
+  color: var(--dl-gris-suave);
+  font-size: var(--dl-fs-sm);
+  font-style: italic;
+}
+.dl-direccion-tipo__nombre { margin: 0; color: var(--dl-texto-fuerte); font-weight: var(--dl-fw-medium); }
+.dl-campo__ayuda {
+  margin: var(--dl-space-1) 0 0;
+  color: var(--dl-gris-suave);
+  font-size: var(--dl-fs-xs);
+  font-style: italic;
+}
+.dl-campo__opcional { color: var(--dl-gris-suave); font-weight: var(--dl-fw-regular); }
+.dl-cambio-clave {
+  min-width: 0;
+  margin: var(--dl-space-5) 0;
+  padding: var(--dl-space-4) var(--dl-space-4) 0;
+  border: 1px solid var(--dl-borde-sutil);
+  border-radius: var(--dl-radio);
+}
+.dl-cambio-clave legend {
+  padding: 0 var(--dl-space-2);
+  color: var(--dl-texto-fuerte);
+  font-size: var(--dl-fs-md);
+  font-weight: var(--dl-fw-medium);
+}
+
+.dl-panel__main h1 {
+  margin-bottom: var(--dl-space-5);
+}
+
+.dl-panel__seccion {
+  background: var(--dl-blanco);
+  border: 1px solid var(--dl-gris-borde);
+  border-radius: var(--dl-radio);
+  box-shadow: var(--dl-sombra-sm);
+  padding: var(--dl-space-5);
+  margin-bottom: var(--dl-space-5);
+}
+.dl-panel__seccion h2 {
+  font-size: var(--dl-fs-md);
+  margin-bottom: var(--dl-space-4);
+}
+
+/* Grid de campos de perfil */
+.dl-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--dl-space-4);
+}
+
+/* --- Tablas de panel -------------------------------------------------------- */
+
+.dl-tabla-wrap { overflow-x: auto; }
+
+.dl-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .9rem;
+}
+.dl-tabla th {
+  text-align: left;
+  padding: 12px 14px;
+  background: var(--dl-gris-fondo);
+  color: #222;
+  font-weight: 700;
+  border-bottom: 1px solid var(--dl-gris-borde);
+  white-space: nowrap;
+}
+.dl-tabla td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--dl-gris-borde);
+  vertical-align: middle;
+}
+.dl-tabla tr:last-child td { border-bottom: 0; }
+.dl-tabla tr:hover td { background: #FAFBFC; }
+
+.dl-tabla img {
+  width: 42px; height: 42px;
+  object-fit: contain;
+  background: var(--dl-gris-fondo);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+/* Estados de pedido */
+.dl-estado {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: var(--dl-radio-pill);
+  font-size: .76rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.dl-estado--entregado   { background: #E8F7EE; color: var(--dl-exito); }
+.dl-estado--camino      { background: #E0F3FE; color: var(--dl-azul-oscuro); }
+.dl-estado--cotizacion  { background: #FDF3E2; color: var(--dl-alerta); }
+.dl-estado--pendiente   { background: #F1F1F1; color: var(--dl-gris-suave); }
+
+/* Tarjetas de direccion */
+.dl-direcciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.dl-direccion {
+  border: 1px solid var(--dl-gris-borde);
+  border-radius: var(--dl-radio);
+  padding: 16px;
+  position: relative;
+}
+.dl-direccion strong { display: block; margin-bottom: 4px; }
+.dl-direccion p { color: var(--dl-gris-suave); font-size: .88rem; margin: 0; }
+
+/* --- Dashboard admin: tiles de metricas ------------------------------------ */
+
+.dl-metricas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.dl-metrica {
+  background: var(--dl-blanco);
+  border: 1px solid var(--dl-gris-borde);
+  border-radius: var(--dl-radio);
+  box-shadow: var(--dl-sombra-sm);
+  padding: var(--dl-space-5);
+}
+.dl-metrica span { display: block; font-size: .82rem; color: var(--dl-gris-suave); margin-bottom: 8px; }
+.dl-metrica strong { display: block; font-size: 1.6rem; color: #222; }
+.dl-metrica em {
+  font-style: normal;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--dl-exito);
+}
+.dl-metrica em.dl-baja { color: #B91C1C; }
+
+.dl-panel__acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.dl-btn--sm { padding: 8px 16px; font-size: .85rem; }
+.dl-btn--peligro { background: #DC2626; color: var(--dl-blanco); }
+.dl-btn--peligro:hover { background: #B91C1C; }
+
+/* --- Responsive -------------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  /* minmax(0, 1fr), no 1fr solo: un 1fr implicito tiene min-width:auto,
+     que respeta el ancho intrinseco de tablas anchas (ej. admin/productos)
+     y desborda el viewport en vez de scrollear dentro de .dl-tabla-wrap. */
+  .dl-panel { grid-template-columns: minmax(0, 1fr); }
+  .dl-panel__sidebar { position: static; }
+  .dl-panel--cuenta .dl-panel__nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dl-cuenta-accesos { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .dl-auth__card { padding: 26px 20px; }
+  .dl-panel--cuenta .dl-panel__nav { grid-template-columns: 1fr; }
+  .dl-panel__encabezado { align-items: flex-start; flex-direction: column; }
+  .dl-cuenta-bienvenida { padding: var(--dl-space-5); }
+}

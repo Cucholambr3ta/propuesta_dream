@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Categoria Tornillo Hexagonal">
+  <rect width="220" height="220" fill="#EAF7E9"/>
+  <rect x="1" y="1" width="218" height="218" fill="none" stroke="#CDEDC8" stroke-width="2"/>
+  <g stroke="#15803D" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="110" cy="110" r="24"/><path d="M155 122a13 13 0 0 0 2 14l1 1a16 16 0 1 1-22 22l-1-1a13 13 0 0 0-14-2 13 13 0 0 0-8 12v2a16 16 0 1 1-32 0v-1a13 13 0 0 0-8-12 13 13 0 0 0-14 2l-1 1a16 16 0 1 1-22-22l1-1a13 13 0 0 0 2-14 13 13 0 0 0-12-8h-2a16 16 0 1 1 0-32h1a13 13 0 0 0 12-8 13 13 0 0 0-2-14l-1-1a16 16 0 1 1 22-22l1 1a13 13 0 0 0 14 2h0a13 13 0 0 0 8-12v-2a16 16 0 1 1 32 0v1a13 13 0 0 0 8 12 13 13 0 0 0 14-2l1-1a16 16 0 1 1 22 22l-1 1a13 13 0 0 0-2 14v0a13 13 0 0 0 12 8h2a16 16 0 1 1 0 32h-1a13 13 0 0 0-12 8Z"/>
+  </g>
+</svg>

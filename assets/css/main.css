@@ -1,0 +1,1750 @@
+/* ==========================================================================
+   Dreamlike — main.css
+   Componentes: topbar, header, nav, hero, cards, PDP, footer.
+   ========================================================================== */
+
+/* --- Topbar --------------------------------------------------------------- */
+
+.dl-topbar {
+  background: var(--dl-topbar);
+  color: var(--dl-blanco);
+  font-size: .82rem;
+}
+
+.dl-topbar__in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  min-height: 40px;
+  padding: 6px var(--dl-gap);
+  max-width: var(--dl-max);
+  margin: 0 auto;
+}
+
+.dl-topbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--dl-blanco);
+}
+.dl-topbar__item:hover { text-decoration: underline; }
+
+.dl-topbar .dl-ico { width: 15px; height: 15px; opacity: .85; }
+
+/* --- Header --------------------------------------------------------------- */
+
+.dl-header {
+  background: var(--dl-azul);
+}
+
+.dl-header__in {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 14px var(--dl-gap);
+  max-width: var(--dl-max);
+  margin: 0 auto;
+}
+
+.dl-logo {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+}
+.dl-logo img { width: 150px; }
+
+/* Buscador */
+.dl-buscador {
+  flex: 1 1 auto;
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.dl-buscador input {
+  width: 100%;
+  padding: 12px 18px 12px 46px;
+  border: 0;
+  border-radius: var(--dl-radio-pill);
+  background: var(--dl-blanco);
+  color: var(--dl-gris-texto);
+}
+.dl-buscador input::placeholder { color: #9A9A9A; }
+
+.dl-buscador__ico {
+  position: absolute;
+  left: 16px;
+  color: var(--dl-gris-suave);
+  pointer-events: none;
+}
+
+/* Autocompletar: dropdown de sugerencias bajo el input (assets/js/buscador.js) */
+.dl-buscador__sugerencias {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: var(--dl-blanco);
+  border-radius: var(--dl-radio);
+  box-shadow: var(--dl-sombra-md);
+  overflow: hidden;
+  z-index: 50;
+  max-height: 400px;
+  overflow-y: auto;
+}
+.dl-buscador__sugerencias--abierto { display: block; }
+
+.dl-buscador__item {
+  display: flex;
+  align-items: center;
+  gap: var(--dl-space-3);
+  padding: var(--dl-space-2) var(--dl-space-4);
+  color: var(--dl-gris-texto);
+  text-decoration: none;
+}
+.dl-buscador__item:hover { background: var(--dl-gris-fondo); text-decoration: none; }
+.dl-buscador__item img {
+  width: 40px; height: 40px;
+  object-fit: contain;
+  background: var(--dl-gris-fondo);
+  border-radius: var(--dl-radio-sm);
+  flex: 0 0 auto;
+}
+.dl-buscador__item-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.dl-buscador__item-nombre {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--dl-texto-fuerte);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dl-buscador__item-marca { font-size: .78rem; color: var(--dl-gris-suave); }
+.dl-buscador__item-precio {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--dl-texto-fuerte);
+  flex: 0 0 auto;
+}
+
+.dl-buscador__vacio {
+  padding: var(--dl-space-4);
+  font-size: .88rem;
+  color: var(--dl-gris-suave);
+  text-align: center;
+  margin: 0;
+}
+
+/* Acciones (cuenta + carrito) */
+.dl-acciones {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dl-cuenta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border: 1.5px solid rgba(255, 255, 255, .55);
+  border-radius: var(--dl-radio-pill);
+  color: var(--dl-blanco);
+  font-size: .9rem;
+  font-weight: var(--dl-fw-medium);
+  white-space: nowrap;
+}
+.dl-cuenta:hover {
+  background: var(--dl-blanco);
+  border-color: var(--dl-blanco);
+  color: var(--dl-azul-oscuro);
+  text-decoration: none;
+}
+
+.dl-carrito {
+  position: relative;
+  display: inline-flex;
+  color: var(--dl-blanco);
+  padding: 4px;
+}
+.dl-carrito .dl-ico { width: 30px; height: 30px; }
+
+.dl-carrito__n {
+  position: absolute;
+  top: -4px; right: -6px;
+  min-width: 20px; height: 20px;
+  padding: 0 5px;
+  border-radius: var(--dl-radio-pill);
+  background: #111;
+  color: var(--dl-blanco);
+  font-size: .72rem;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+
+/* Boton menu mobile — visible siempre en mobile, abre el panel deslizante
+   (ver .dl-panel-mobile mas abajo); construido/controlado por mega-menu.js */
+.dl-hamburguesa {
+  display: none;
+  color: var(--dl-blanco);
+  padding: 6px;
+}
+.dl-hamburguesa .dl-ico { width: 26px; height: 26px; }
+
+/* ==========================================================================
+   Mega-menu de categorias (desktop >= 1024px)
+   Reemplaza el carrusel de pills. Contenido generado por mega-menu.js desde
+   assets/data/categorias.json — el HTML de cada pagina solo declara
+   <ul id="megaLista"></ul> vacio.
+   ========================================================================== */
+
+.dl-nav {
+  background: var(--dl-azul);
+  position: relative;
+  z-index: 30;
+}
+
+.dl-nav__in {
+  position: relative;
+  max-width: var(--dl-max);
+  margin: 0 auto;
+  padding: 0 var(--dl-gap);
+}
+
+/* Fade lateral: indica que hay mas categorias fuera de vista cuando
+   .dl-nav__lista desborda y hace scroll horizontal (10 categorias no
+   siempre caben en 1280px). Se activa/desactiva desde mega-menu.js
+   segun la posicion real del scroll, no siempre visible. */
+.dl-nav__in::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 32px;
+  background: linear-gradient(90deg, transparent, var(--dl-azul));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .15s ease;
+}
+.dl-nav__in--desborda::after { opacity: 1; }
+
+.dl-nav__lista {
+  display: flex;
+  gap: var(--dl-space-1);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.dl-nav__lista::-webkit-scrollbar { display: none; }
+
+/* static (no relative): asi .dl-mega usa .dl-nav__in como containing block
+   y se despliega a todo el ancho de la barra, no solo bajo este <li> */
+.dl-nav__cat { position: static; flex: 0 0 auto; }
+
+.dl-nav__trigger {
+  padding: var(--dl-space-3) var(--dl-space-2);
+  color: var(--dl-blanco);
+  font-size: var(--dl-fs-xs);
+  font-weight: var(--dl-fw-medium);
+  white-space: nowrap;
+  border-radius: var(--dl-radio-sm);
+  transition: background var(--dl-trans), color var(--dl-trans);
+}
+.dl-nav__trigger:hover,
+.dl-nav__trigger[aria-expanded="true"] {
+  background: var(--dl-blanco);
+  color: var(--dl-azul-oscuro);
+}
+
+/* Panel del mega-menu — superficie flotante: radio/sombra grandes.
+   Animacion "globo": escala desde el trigger con leve overshoot, en vez de
+   display:none/block instantaneo (ese no permite transicionar). */
+.dl-mega {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--dl-vidrio-fondo);
+  backdrop-filter: var(--dl-vidrio-blur);
+  -webkit-backdrop-filter: var(--dl-vidrio-blur);
+  border-radius: var(--dl-radio-lg);
+  box-shadow: var(--dl-sombra-alta);
+  border-top: 2px solid var(--dl-azul);
+  padding: var(--dl-space-6);
+  z-index: 40;
+  transform-origin: var(--dl-mega-origen-x, 50%) top;
+  transform: scale(.85);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform .32s cubic-bezier(.34, 1.56, .64, 1),
+              opacity .22s ease,
+              visibility 0s linear .22s;
+}
+.dl-mega--abierto {
+  transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform .32s cubic-bezier(.34, 1.56, .64, 1),
+              opacity .22s ease,
+              visibility 0s;
+}
+
+.dl-mega__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--dl-space-6);
+}
+
+.dl-mega__titulo {
+  font-size: var(--dl-fs-sm);
+  font-weight: 700;
+  color: var(--dl-azul-oscuro);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  margin-bottom: var(--dl-space-3);
+}
+
+.dl-mega__col ul { display: flex; flex-direction: column; gap: var(--dl-space-2); }
+/* Links sobre fondo blanco: nunca --dl-azul puro (regla de contraste de paleta.md) */
+.dl-mega__col a { color: var(--dl-gris-texto); font-size: var(--dl-fs-sm); }
+.dl-mega__col a:hover { color: var(--dl-azul-hover); text-decoration: none; }
+
+.dl-mega__vertodo {
+  display: inline-block;
+  margin-top: var(--dl-space-5);
+  padding-top: var(--dl-space-4);
+  border-top: 1px solid var(--dl-gris-borde);
+  font-weight: 700;
+  color: var(--dl-azul-hover);
+}
+
+/* ==========================================================================
+   Panel mobile deslizante + acordeon (< 1024px)
+   Nodo raiz (#panelMobile) y overlay (#overlayMenu) se crean dinamicamente
+   por mega-menu.js y se appendean a <body> — no viven en el HTML estatico.
+   ========================================================================== */
+
+.dl-panel-mobile {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: min(340px, 86vw);
+  background: var(--dl-blanco);
+  box-shadow: var(--dl-sombra-alta);
+  border-radius: 0 var(--dl-radio-lg) var(--dl-radio-lg) 0;
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+  z-index: 100;
+  overflow-y: auto;
+}
+.dl-panel-mobile--abierto { transform: translateX(0); }
+
+.dl-panel-mobile__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--dl-space-4) var(--dl-space-5);
+  background: var(--dl-azul);
+  color: var(--dl-blanco);
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+}
+
+.dl-panel-mobile__cerrar {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dl-space-2);
+  color: var(--dl-blanco);
+  font-size: var(--dl-fs-sm);
+  font-weight: 600;
+}
+
+.dl-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, .5);
+  z-index: 90;
+}
+
+/* ==========================================================================
+   Drawer de carrito — panel lateral desde la derecha (creado dinamicamente
+   por assets/js/carrito-drawer.js y appendeado a <body>, mismo patron que
+   .dl-panel-mobile). Reusa .dl-overlay para el fondo.
+   ========================================================================== */
+
+.dl-drawer-carrito {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(400px, 92vw);
+  background: var(--dl-blanco);
+  box-shadow: var(--dl-sombra-alta);
+  border-radius: var(--dl-radio-lg) 0 0 var(--dl-radio-lg);
+  transform: translateX(100%);
+  transition: transform .3s ease;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.dl-drawer-carrito--abierto { transform: translateX(0); }
+
+.dl-drawer-carrito__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--dl-space-4) var(--dl-space-5);
+  background: var(--dl-azul);
+  color: var(--dl-blanco);
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+
+.dl-drawer-carrito__cerrar { color: var(--dl-blanco); display: inline-flex; padding: var(--dl-space-1); }
+
+.dl-drawer-carrito__lista {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: var(--dl-space-4) var(--dl-space-5);
+}
+
+.dl-drawer-item {
+  display: flex;
+  gap: var(--dl-space-3);
+  padding: var(--dl-space-3) 0;
+  border-bottom: 1px solid var(--dl-gris-borde);
+}
+.dl-drawer-item:last-child { border-bottom: 0; }
+
+.dl-drawer-item__img {
+  width: 56px; height: 56px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  background: var(--dl-gris-fondo);
+  border-radius: var(--dl-radio-sm);
+  padding: var(--dl-space-1);
+}
+
+.dl-drawer-item__info { flex: 1 1 auto; min-width: 0; }
+.dl-drawer-item__nombre {
+  font-size: var(--dl-fs-sm);
+  font-weight: 600;
+  color: var(--dl-gris-texto);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.dl-drawer-item__precio { font-size: var(--dl-fs-sm); color: var(--dl-gris-suave); margin-top: var(--dl-space-1); }
+
+.dl-drawer-item__acciones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--dl-space-2);
+}
+
+.dl-drawer-item__cantidad {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--dl-gris-borde);
+  border-radius: var(--dl-radio-sm);
+}
+.dl-drawer-item__cantidad button {
+  position: relative;
+  width: 26px; height: 26px;
+  font-weight: 700;
+  color: var(--dl-azul-hover);
+}
+/* Area de touch de 40px sin agrandar el boton visual (mismo patron que
+   .dl-hero__dot::before) — accion frecuente, debe ser facil de tocar. */
+.dl-drawer-item__cantidad button::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 40px; height: 40px;
+  transform: translate(-50%, -50%);
+}
+.dl-drawer-item__cantidad span {
+  min-width: 22px;
+  text-align: center;
+  font-size: var(--dl-fs-sm);
+  font-weight: 600;
+}
+
+.dl-drawer-item__quitar {
+  position: relative;
+  color: #B91C1C;
+  font-size: var(--dl-fs-md);
+  padding: var(--dl-space-1);
+}
+.dl-drawer-item__quitar::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 40px; height: 40px;
+  transform: translate(-50%, -50%);
+}
+
+.dl-drawer-carrito__vacio {
+  text-align: center;
+  padding: var(--dl-space-8) var(--dl-space-5);
+  color: var(--dl-gris-suave);
+}
+.dl-drawer-carrito__vacio .dl-ico { width: 48px; height: 48px; color: var(--dl-gris-borde); margin: 0 auto var(--dl-space-4); }
+
+.dl-drawer-carrito__pie {
+  flex: 0 0 auto;
+  padding: var(--dl-space-4) var(--dl-space-5);
+  border-top: 1px solid var(--dl-gris-borde);
+}
+
+/* Sugeridos: misma categoria de lo que ya esta en el carrito, no lo que ya
+   se agrego (assets/js/carrito-drawer.js::renderSugeridos). Vacio (sin
+   markup) si el carrito esta vacio o no hay nada que sugerir. */
+.dl-drawer-sugeridos {
+  flex: 0 0 auto;
+  padding: 0 var(--dl-space-5);
+  border-top: 1px solid var(--dl-gris-borde);
+}
+.dl-drawer-sugeridos:empty { display: none; border: 0; }
+
+.dl-drawer-sugeridos__titulo {
+  font-size: var(--dl-fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--dl-gris-suave);
+  margin: var(--dl-space-3) 0 var(--dl-space-2);
+}
+
+.dl-drawer-sugerido {
+  display: flex;
+  align-items: center;
+  gap: var(--dl-space-3);
+  padding: var(--dl-space-2) 0;
+  text-decoration: none;
+  color: var(--dl-gris-texto);
+}
+.dl-drawer-sugerido:hover { text-decoration: none; }
+.dl-drawer-sugerido:not(:last-child) { border-bottom: 1px solid var(--dl-gris-borde); }
+.dl-drawer-sugerido img {
+  width: 44px; height: 44px;
+  flex: 0 0 auto;
+  object-fit: contain;
+  background: var(--dl-gris-fondo);
+  border-radius: var(--dl-radio-sm);
+  padding: var(--dl-space-1);
+}
+.dl-drawer-sugerido__info { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; }
+.dl-drawer-sugerido__nombre {
+  font-size: var(--dl-fs-sm);
+  font-weight: 600;
+  color: var(--dl-texto-fuerte);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dl-drawer-sugerido__precio { font-size: var(--dl-fs-sm); color: var(--dl-gris-suave); }
+
+.dl-drawer-carrito__total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 800;
+  font-size: var(--dl-fs-md);
+  margin-bottom: var(--dl-space-4);
+}
+
+.dl-drawer-carrito__acciones { display: flex; flex-direction: column; gap: var(--dl-space-2); }
+
+/* ==========================================================================
+   Modal de login/registro — panel lateral desde la derecha (creado
+   dinamicamente por assets/js/auth-modal.js y appendeado a <body>), mismo
+   mecanismo que .dl-drawer-carrito. Reusa .dl-overlay para el fondo y
+   .dl-campo (panel.css) para los inputs de ambos formularios.
+   ========================================================================== */
+
+.dl-auth-modal {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(460px, 94vw);
+  background: var(--dl-blanco);
+  box-shadow: var(--dl-sombra-alta);
+  border-radius: var(--dl-radio-lg) 0 0 var(--dl-radio-lg);
+  transform: translateX(100%);
+  transition: transform .3s ease;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.dl-auth-modal--abierto { transform: translateX(0); }
+
+.dl-auth-modal__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: var(--dl-space-7) var(--dl-space-6) var(--dl-space-5);
+  flex: 0 0 auto;
+}
+.dl-auth-modal__cabecera img { width: 170px; }
+.dl-auth-modal__cerrar {
+  position: absolute;
+  top: var(--dl-space-5); right: var(--dl-space-5);
+  color: var(--dl-gris-suave);
+  padding: var(--dl-space-1);
+}
+.dl-auth-modal__cerrar:hover { color: var(--dl-texto-fuerte); }
+
+.dl-auth-modal__tabs {
+  display: flex;
+  gap: var(--dl-space-3);
+  padding: 0 var(--dl-space-6) var(--dl-space-6);
+  flex: 0 0 auto;
+}
+.dl-auth-modal__tab {
+  flex: 1 1 0;
+  padding: var(--dl-space-3);
+  border-radius: var(--dl-radio-pill);
+  background: var(--dl-gris-fondo);
+  color: var(--dl-gris-texto);
+  font-weight: 700;
+  text-align: center;
+}
+.dl-auth-modal__tab--activo {
+  background: var(--dl-azul);
+  color: var(--dl-blanco);
+}
+
+.dl-auth-modal__cuerpo { padding: 0 var(--dl-space-6) var(--dl-space-7); flex: 0 0 auto; }
+.dl-auth-modal__form { display: none; }
+.dl-auth-modal__form--activo { display: block; }
+
+.dl-auth-modal__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--dl-space-2);
+  font-size: var(--dl-fs-sm);
+  color: var(--dl-gris-texto);
+  margin-bottom: var(--dl-space-4);
+}
+
+.dl-auth-modal__extra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--dl-fs-sm);
+  margin: calc(var(--dl-space-2) * -1) 0 var(--dl-space-4);
+}
+.dl-auth-modal__recordarme {
+  display: flex;
+  align-items: center;
+  gap: var(--dl-space-2);
+  color: var(--dl-gris-texto);
+}
+.dl-auth-modal__olvido { color: var(--dl-azul-hover); }
+
+/* Boton negro, look mas cercano a la referencia del cliente (sitio real) */
+.dl-auth-modal__form .dl-btn--primario {
+  background: #111;
+}
+.dl-auth-modal__form .dl-btn--primario:hover { background: #000; }
+.dl-auth-modal__checkbox input { margin-top: 3px; flex: 0 0 auto; }
+
+/* Acceso — composición vertical aireada basada en la referencia aprobada.
+   Los labels siguen presentes para lectores de pantalla y los inputs llevan
+   iconos como ayuda contextual, sin depender del color para comunicar estado. */
+.dl-auth-modal__cabecera {
+  min-height: 350px;
+  align-items: flex-end;
+  padding: var(--dl-space-6) var(--dl-space-5) 44px;
+}
+.dl-auth-modal__cabecera img { width: 142px; }
+.dl-auth-modal__cerrar {
+  top: var(--dl-space-3);
+  right: var(--dl-space-3);
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--dl-azul-oscuro);
+  background: var(--dl-blanco);
+  box-shadow: var(--dl-sombra);
+}
+.dl-auth-modal__cerrar .dl-ico { width: 14px; height: 14px; }
+.dl-auth-modal__tabs {
+  gap: var(--dl-space-2);
+  padding: 0 var(--dl-space-4) 44px;
+}
+.dl-auth-modal__tab {
+  min-height: 42px;
+  padding: var(--dl-space-2) var(--dl-space-3);
+  border-radius: 12px;
+  background: var(--dl-auth-fondo-tab);
+  color: var(--dl-auth-texto-tab);
+  font-size: var(--dl-fs-xs);
+  font-weight: 700;
+  box-shadow: none;
+}
+.dl-auth-modal__tab--activo {
+  background: linear-gradient(135deg, var(--dl-azul), var(--dl-auth-gradiente-tab));
+  color: var(--dl-blanco);
+  box-shadow: 0 12px 20px rgba(0, 119, 237, .20);
+}
+.dl-auth-modal__cuerpo { padding: 0 var(--dl-space-4) var(--dl-space-7); }
+.dl-auth-modal__campo { margin-bottom: var(--dl-space-3); }
+.dl-auth-modal__control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  border: 1px solid var(--dl-auth-borde-campo);
+  border-radius: 12px;
+  background: var(--dl-blanco);
+  transition: border-color var(--dl-trans), box-shadow var(--dl-trans);
+}
+.dl-auth-modal__control:focus-within {
+  border-color: rgba(0, 119, 237, .8);
+  box-shadow: 0 0 0 3px rgba(0, 119, 237, .12);
+}
+.dl-auth-modal__control > .dl-ico {
+  width: 17px;
+  height: 17px;
+  margin-left: var(--dl-space-3);
+  color: var(--dl-auth-icono);
+  stroke-width: 2.25;
+  flex: 0 0 auto;
+}
+.dl-auth-modal .dl-auth-modal__control input {
+  min-width: 0;
+  height: 44px;
+  padding: 0 32px 0 var(--dl-space-2);
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  color: var(--dl-texto-fuerte);
+  font-size: var(--dl-fs-xs);
+  outline: 0;
+}
+.dl-auth-modal .dl-auth-modal__control input::placeholder { color: var(--dl-auth-icono); opacity: 1; }
+.dl-auth-modal__requerido {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  color: var(--dl-gris-suave);
+  font-size: var(--dl-fs-xs);
+}
+.dl-auth-modal__ver-password {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 20px;
+  color: var(--dl-auth-icono);
+}
+.dl-auth-modal__ver-password:hover { color: var(--dl-azul-oscuro); }
+.dl-auth-modal__ver-password .dl-ico { width: 16px; height: 16px; }
+.dl-auth-modal__extra {
+  margin: var(--dl-space-1) 0 var(--dl-space-4);
+  font-size: var(--dl-fs-xs);
+}
+.dl-auth-modal__recordarme { color: var(--dl-auth-texto-secundario); }
+.dl-auth-modal__olvido { font-weight: 600; }
+.dl-auth-modal__form .dl-btn--primario {
+  min-height: 47px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, var(--dl-auth-boton-inicio), var(--dl-auth-boton-fin));
+  box-shadow: 0 10px 16px rgba(0, 0, 0, .18);
+  font-size: var(--dl-fs-xs);
+}
+
+@media (max-width: 520px) {
+  .dl-auth-modal { width: min(460px, 100vw); border-radius: 0; }
+  .dl-auth-modal__cabecera { min-height: 320px; }
+}
+
+.dl-acordeon__item { border-bottom: 1px solid var(--dl-gris-borde); }
+
+.dl-acordeon__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--dl-space-4) var(--dl-space-5);
+  font-weight: var(--dl-fw-medium);
+  color: var(--dl-gris-texto);
+  text-align: left;
+}
+.dl-acordeon__flecha { transition: transform .2s ease; }
+.dl-acordeon__trigger--abierto .dl-acordeon__flecha { transform: rotate(90deg); }
+.dl-acordeon__trigger--abierto { color: var(--dl-azul-hover); }
+
+.dl-acordeon__panel {
+  padding: 0 var(--dl-space-5) var(--dl-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--dl-space-2);
+  background: var(--dl-gris-fondo);
+}
+
+.dl-acordeon__sub-titulo {
+  font-size: var(--dl-fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: var(--dl-gris-suave);
+  margin: var(--dl-space-3) 0 var(--dl-space-1);
+}
+
+.dl-acordeon__panel a {
+  color: var(--dl-gris-texto);
+  font-size: var(--dl-fs-sm);
+  padding: var(--dl-space-1) 0;
+}
+.dl-acordeon__panel a:hover { color: var(--dl-azul-hover); }
+
+.dl-acordeon__vertodo {
+  display: inline-block;
+  margin-top: var(--dl-space-2);
+  font-weight: 700;
+  color: var(--dl-azul-hover) !important;
+}
+
+/* --- Hero ----------------------------------------------------------------- */
+
+/* Card contenida (no full-bleed): espacio blanco alrededor + margenes
+   redondeados, pedido explicito del cliente para "mantener el estilo" del
+   resto del sitio (mismas superficies con radio/sombra que cards y modales). */
+.dl-hero-wrap {
+  padding-top: var(--dl-space-6);
+  padding-bottom: var(--dl-space-2);
+}
+
+.dl-hero {
+  position: relative;
+  overflow: hidden;
+  background: #DDD;
+  border-radius: var(--dl-radio-lg);
+  box-shadow: var(--dl-sombra);
+}
+
+.dl-hero__pista {
+  display: flex;
+  transition: transform .45s ease;
+}
+
+.dl-hero__slide {
+  flex: 0 0 100%;
+  position: relative;
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Slides que representan una categoria real (ej. "Automatizacion y Control")
+   son clickeables enteros via este link cobertor — no reemplaza al slide,
+   se superpone para no romper el selector .dl-hero__slide que usa hero.js */
+.dl-hero__slide-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Gradientes de marca por slide — variacion real de tono, no solo brillo,
+   manteniendo contraste alto para el titulo (contorno blanco) */
+.dl-hero__slide--1 { background: linear-gradient(135deg, #0C1B2E 0%, #0B4A72 55%, #1B7DAE 130%); }
+.dl-hero__slide--2 { background: linear-gradient(135deg, #06231F 0%, #0F6E5C 55%, #159259 130%); }
+.dl-hero__slide--3 { background: linear-gradient(135deg, #17102E 0%, #4338CA 55%, #6B4FC4 130%); }
+.dl-hero__slide--4 { background: linear-gradient(135deg, #0C1B2E 0%, #075985 55%, #0E5E8C 130%); }
+
+.dl-hero__titulo {
+  margin: 0;
+  padding: 0 20px;
+  font-size: clamp(2.4rem, 8vw, 6rem);
+  font-weight: 600;
+  letter-spacing: -.04em;
+  text-align: center;
+  color: var(--dl-blanco);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, .3);
+}
+
+.dl-hero__cta {
+  display: flex;
+  gap: var(--dl-space-3);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--dl-space-5);
+  position: relative;
+  z-index: 1;
+}
+
+.dl-hero__slide-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dl-hero__flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .75);
+  color: #222;
+}
+.dl-hero__flecha:hover { background: var(--dl-blanco); }
+.dl-hero__flecha--prev { left: 14px; }
+.dl-hero__flecha--next { right: 14px; }
+.dl-hero__flecha .dl-ico { width: 24px; height: 24px; }
+
+.dl-hero__dots {
+  position: absolute;
+  bottom: 16px; left: 0; right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+
+.dl-hero__dot {
+  position: relative;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .6);
+  border: 1px solid rgba(0, 0, 0, .15);
+}
+.dl-hero__dot--activo { background: var(--dl-azul); }
+/* Area de touch de 44px (recomendado) sin agrandar el punto visual —
+   pseudo-elemento invisible mas grande, centrado sobre el mismo boton. */
+.dl-hero__dot::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 44px; height: 44px;
+  transform: translate(-50%, -50%);
+}
+
+/* --- Grid + card de producto ---------------------------------------------- */
+
+.dl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.dl-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--dl-borde-sutil);
+  border-radius: var(--dl-radio);
+  background: var(--dl-blanco);
+  box-shadow: var(--dl-sombra-sm);
+  overflow: hidden;
+  transition: transform var(--dl-trans), box-shadow var(--dl-trans), border-color var(--dl-trans);
+}
+.dl-card:hover {
+  transform: translateY(-4px) scale(1.005);
+  border-color: var(--dl-azul);
+  box-shadow: var(--dl-sombra-md);
+}
+
+.dl-card__img {
+  display: block;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--dl-gris-fondo);
+  padding: 12px;
+  overflow: hidden;
+}
+.dl-card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--dl-trans);
+}
+.dl-card:hover .dl-card__img img { transform: scale(1.04); }
+
+/* Pill flotante (nombre + precio) sobre la imagen — patron tomado de
+   Vercel Commerce (components/label.tsx), adaptado: solo nombre+precio
+   (el dato que importa "de un vistazo"), marca/IVA/stock se quedan en el
+   cuerpo porque son metadata secundaria de catalogo B2B tecnico. Mismos
+   tokens de vidrio que mega-menu/modales (base.css), sin inventar nuevos. */
+.dl-card__pill {
+  position: absolute;
+  left: 10px; right: 10px; bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dl-space-2);
+  padding: var(--dl-space-2) var(--dl-space-3);
+  border-radius: var(--dl-radio-pill);
+  background: var(--dl-vidrio-fondo);
+  backdrop-filter: var(--dl-vidrio-blur);
+  -webkit-backdrop-filter: var(--dl-vidrio-blur);
+  box-shadow: var(--dl-sombra-sm);
+}
+
+.dl-card__cuerpo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  flex: 1 1 auto;
+}
+
+.dl-card__marca {
+  font-size: .74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--dl-gris-suave);
+}
+
+.dl-card__nombre {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--dl-texto-fuerte);
+  /* Maximo 2 lineas, la pill no crece sin control con nombres largos */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.25;
+}
+
+.dl-card__precio {
+  font-size: .95rem;
+  font-weight: 800;
+  color: var(--dl-texto-fuerte);
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.dl-card__iva {
+  font-size: .74rem;
+  color: var(--dl-gris-suave);
+  margin-top: -4px;
+}
+
+.dl-card__pie { margin-top: auto; padding-top: 10px; }
+
+/* --- Franja de confianza -------------------------------------------------- */
+
+.dl-confianza {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.dl-confianza__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.dl-confianza__item .dl-ico {
+  width: 32px; height: 32px;
+  color: var(--dl-azul);
+  stroke-width: 1.6;
+}
+.dl-confianza__item strong { display: block; color: #222; }
+.dl-confianza__item span { font-size: .88rem; color: var(--dl-gris-suave); }
+
+/* --- Marcas --------------------------------------------------------------- */
+
+/* Carrusel horizontal: scrollea con el dedo/mouse, sin flechas (igual
+   patron que .dl-nav__lista) — cada marca es un link real a marca.html */
+.dl-marcas {
+  display: flex;
+  gap: var(--dl-space-4);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  /* espacio real arriba y abajo para que la sombra/elevacion del hover
+     nunca se recorte contra el borde del contenedor con overflow-x */
+  padding: var(--dl-space-3) 2px var(--dl-space-4);
+}
+.dl-marcas::-webkit-scrollbar { display: none; }
+/* Autoplay activo (marcas-home.js): el snap por-pixel pelea con scrollLeft +=,
+   el navegador lo clampea de vuelta al punto de snap cada frame. Se apaga
+   mientras el JS mueve el carrusel solo, y se restaura en hover/touch. */
+.dl-marcas--auto { scroll-snap-type: none; }
+
+.dl-marca {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 170px;
+  min-height: 88px;
+  border: 1px solid var(--dl-borde-sutil);
+  border-radius: var(--dl-radio);
+  background: var(--dl-blanco);
+  color: var(--dl-gris-suave);
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-align: center;
+  line-height: 1.3;
+  padding: var(--dl-space-3) var(--dl-space-4);
+  transition: transform var(--dl-trans), box-shadow var(--dl-trans), border-color var(--dl-trans), color var(--dl-trans);
+}
+.dl-marca:hover {
+  transform: translateY(-3px);
+  border-color: var(--dl-azul);
+  box-shadow: var(--dl-sombra-md);
+  color: var(--dl-azul-oscuro);
+  text-decoration: none;
+}
+
+/* --- CTA cotizacion ------------------------------------------------------- */
+
+.dl-cta {
+  background: var(--dl-azul);
+  color: var(--dl-blanco);
+  text-align: center;
+  padding: 44px var(--dl-gap);
+}
+.dl-cta h2 { color: var(--dl-blanco); }
+.dl-cta p { color: rgba(255, 255, 255, .95); }
+
+.dl-cta__botones {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+.dl-cta .dl-btn--secundario {
+  background: var(--dl-blanco);
+  border-color: var(--dl-blanco);
+  color: var(--dl-azul-oscuro);
+}
+
+/* --- Footer --------------------------------------------------------------- */
+
+.dl-footer {
+  background: var(--dl-blanco);
+  color: var(--dl-gris-texto);
+  border-top: 1px solid var(--dl-borde-sutil);
+  padding: 44px 0 0;
+}
+
+.dl-footer__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  padding-bottom: 32px;
+}
+
+.dl-footer h3 {
+  color: var(--dl-texto-fuerte);
+  font-size: 1rem;
+  margin-bottom: 14px;
+}
+
+.dl-footer a { color: var(--dl-gris-texto); }
+.dl-footer a:hover { color: var(--dl-azul-hover); }
+
+.dl-footer li { margin-bottom: 8px; font-size: .9rem; }
+
+/* Direccion clickeable del footer: mismo look que un link, abre el modal
+   de mapa (ver assets/js/mapa-modal.js) */
+.dl-footer__mapa-trigger {
+  color: var(--dl-gris-texto);
+  text-align: left;
+  cursor: pointer;
+}
+.dl-footer__mapa-trigger:hover { color: var(--dl-azul-hover); text-decoration: underline; }
+
+.dl-footer__legal {
+  border-top: 1px solid var(--dl-borde-sutil);
+  padding: 16px 0;
+  text-align: center;
+  font-size: .82rem;
+  color: var(--dl-gris-suave);
+}
+
+/* ==========================================================================
+   Banner de categoria (categoria.html) — franja con imagen de fondo por
+   categoria (campo "banner" en categorias.json, editable ahi). Mismo
+   patron visual que .dl-cat: overlay oscuro + texto blanco encima.
+   ========================================================================== */
+
+.dl-categoria-banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 180px;
+  padding: var(--dl-space-6) var(--dl-space-6);
+  margin-bottom: var(--dl-space-6);
+  border-radius: var(--dl-radio-lg);
+  background-color: var(--dl-gris-fondo);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.dl-categoria-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, .72) 0%, rgba(0, 0, 0, .3) 100%);
+}
+.dl-categoria-banner h1,
+.dl-categoria-banner p {
+  position: relative;
+  z-index: 1;
+  color: var(--dl-blanco);
+}
+.dl-categoria-banner #categoriaContador { opacity: .85; margin-top: var(--dl-space-1); }
+
+/* ==========================================================================
+   PDP — pagina de producto
+   ========================================================================== */
+
+.dl-breadcrumb {
+  font-size: .85rem;
+  color: var(--dl-gris-suave);
+  padding: 16px 0;
+}
+.dl-breadcrumb a { color: var(--dl-gris-suave); }
+.dl-breadcrumb span { margin: 0 6px; }
+
+.dl-pdp {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+/* Galeria */
+.dl-galeria__principal {
+  border: 1px solid var(--dl-gris-borde);
+  border-radius: var(--dl-radio);
+  background: var(--dl-gris-fondo);
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.dl-galeria__principal img { max-height: 100%; object-fit: contain; }
+
+.dl-galeria__minis {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.dl-mini {
+  width: 74px; height: 74px;
+  border: 2px solid var(--dl-gris-borde);
+  border-radius: 6px;
+  background: var(--dl-gris-fondo);
+  padding: 6px;
+  display: grid;
+  place-items: center;
+}
+.dl-mini img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.dl-mini--activa { border-color: var(--dl-azul); }
+
+/* Bloque de compra */
+.dl-compra__marca {
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--dl-gris-suave);
+}
+
+.dl-compra h1 {
+  font-size: 1.75rem;
+  margin: 6px 0 10px;
+}
+
+.dl-compra__sku {
+  font-size: .85rem;
+  color: var(--dl-gris-suave);
+  margin-bottom: 16px;
+}
+
+.dl-compra__precio {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #111;
+  line-height: 1.1;
+}
+
+.dl-compra__iva {
+  font-size: .85rem;
+  color: var(--dl-gris-suave);
+  margin-bottom: 18px;
+}
+
+.dl-compra__stock { margin-bottom: 20px; }
+
+/* Selector de cantidad */
+.dl-cantidad {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.dl-cantidad__ctrl {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--dl-gris-borde);
+  border-radius: var(--dl-radio);
+  overflow: hidden;
+}
+
+.dl-cantidad__btn {
+  width: 40px; height: 44px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dl-azul-hover);
+  background: var(--dl-gris-fondo);
+}
+.dl-cantidad__btn:hover { background: var(--dl-azul-claro); }
+
+.dl-cantidad input {
+  width: 62px; height: 44px;
+  border: 0;
+  border-left: 1px solid var(--dl-gris-borde);
+  border-right: 1px solid var(--dl-gris-borde);
+  text-align: center;
+  font-weight: 700;
+  /* Oculta las flechas nativas */
+  -moz-appearance: textfield;
+}
+.dl-cantidad input::-webkit-outer-spin-button,
+.dl-cantidad input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.dl-compra__acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.dl-compra__datos {
+  border-top: 1px solid var(--dl-gris-borde);
+  padding-top: 16px;
+  font-size: .9rem;
+}
+.dl-compra__datos li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.dl-compra__datos .dl-ico { color: var(--dl-azul); }
+
+/* Tabs */
+.dl-tabs { border-top: 1px solid var(--dl-gris-borde); padding-top: 28px; }
+
+.dl-tabs__nav {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--dl-gris-borde);
+  margin-bottom: 22px;
+}
+
+.dl-tabs__btn {
+  padding: 12px 22px;
+  font-weight: 700;
+  color: var(--dl-gris-suave);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+}
+.dl-tabs__btn:hover { color: var(--dl-azul-hover); }
+.dl-tabs__btn[aria-selected="true"] {
+  color: var(--dl-azul-hover);
+  border-bottom-color: var(--dl-azul);
+}
+
+.dl-tabs__panel[hidden] { display: none; }
+
+/* Tabla de especificaciones */
+.dl-specs th,
+.dl-specs td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--dl-gris-borde);
+  text-align: left;
+  font-size: .92rem;
+}
+.dl-specs th {
+  width: 38%;
+  background: var(--dl-gris-fondo);
+  font-weight: 700;
+  color: #222;
+}
+
+/* ==========================================================================
+   Carrito — layout tabla + resumen (antes inline style en carrito.html)
+   ========================================================================== */
+
+.dl-carrito-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: var(--dl-space-6);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  /* minmax(0, 1fr), no 1fr solo: un 1fr implicito tiene min-width:auto,
+     que respeta el ancho intrinseco de la tabla del carrito y desborda
+     el viewport en mobile en vez de scrollear dentro de .dl-tabla-wrap. */
+  .dl-carrito-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ==========================================================================
+   Modal de mapa — click en la direccion del footer. Se crea dinamicamente
+   por assets/js/mapa-modal.js y se appendea a <body>. Anima una expansion
+   desde el punto de click (transform-origin dinamico via JS) usando un
+   overlay propio (mayor z-index que .dl-overlay, coexiste con drawer/panel
+   mobile abiertos).
+   ========================================================================== */
+
+.dl-mapa-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, .6);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility 0s linear .25s;
+}
+.dl-mapa-overlay--abierto {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .25s ease, visibility 0s;
+}
+
+.dl-mapa-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  width: min(640px, 92vw);
+  background: var(--dl-blanco);
+  border-radius: var(--dl-radio-lg);
+  box-shadow: var(--dl-sombra-alta);
+  overflow: hidden;
+  z-index: 201;
+  transform: translate(-50%, -50%) scale(.1);
+  opacity: 0;
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1), opacity .25s ease;
+}
+.dl-mapa-modal--abierto {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.dl-mapa-modal__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--dl-space-4) var(--dl-space-5);
+  background: var(--dl-azul);
+  color: var(--dl-blanco);
+}
+
+.dl-mapa-modal__titulo {
+  display: flex;
+  align-items: center;
+  gap: var(--dl-space-2);
+  font-weight: 700;
+}
+.dl-mapa-modal__titulo .dl-ico { width: 20px; height: 20px; }
+
+.dl-mapa-modal__eyebrow {
+  display: block;
+  font-size: var(--dl-fs-xs);
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .8);
+  margin-bottom: 2px;
+}
+
+.dl-mapa-modal__cerrar { color: var(--dl-blanco); display: inline-flex; padding: var(--dl-space-1); flex: 0 0 auto; }
+
+.dl-mapa-modal__mapa {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border: 0;
+  display: block;
+  /* Filtro sutil para acercar la paleta de Google Maps al celeste de marca,
+     sin ocultar calles/etiquetas (legibilidad primero) */
+  filter: saturate(.85) hue-rotate(-6deg);
+}
+
+.dl-mapa-modal__pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dl-space-3);
+  padding: var(--dl-space-4) var(--dl-space-5);
+  flex-wrap: wrap;
+}
+
+.dl-mapa-modal__coords {
+  font-size: var(--dl-fs-sm);
+  color: var(--dl-gris-suave);
+}
+
+@media (max-width: 480px) {
+  .dl-mapa-modal { width: 94vw; }
+  .dl-mapa-modal__pie { flex-direction: column; align-items: stretch; }
+}
+
+/* ==========================================================================
+   Modal generico — panel admin (producto, importar). Mismo mecanismo de
+   overlay + escala que .dl-mapa-modal, generalizado para contenido de
+   formulario con scroll interno (los de mapa/direccion no lo necesitan,
+   por eso quedan como componentes separados en vez de fusionarlos).
+   ========================================================================== */
+
+.dl-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, .6);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--dl-space-4);
+  transition: opacity .2s ease, visibility 0s linear .2s;
+}
+.dl-modal-overlay--abierto {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .2s ease, visibility 0s;
+}
+
+.dl-modal {
+  width: min(640px, 100%);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--dl-vidrio-fondo);
+  backdrop-filter: var(--dl-vidrio-blur);
+  -webkit-backdrop-filter: var(--dl-vidrio-blur);
+  border-radius: var(--dl-radio-lg);
+  box-shadow: var(--dl-sombra-alta);
+  overflow: hidden;
+  transform: scale(.94);
+  opacity: 0;
+  transition: transform .2s ease, opacity .2s ease;
+}
+.dl-modal-overlay--abierto .dl-modal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.dl-modal__cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--dl-space-4) var(--dl-space-5);
+  border-bottom: 1px solid var(--dl-borde-sutil);
+  flex: 0 0 auto;
+}
+.dl-modal__cabecera h2 { margin: 0; font-size: var(--dl-fs-md); }
+.dl-modal__cerrar { color: var(--dl-gris-suave); display: inline-flex; padding: var(--dl-space-1); }
+.dl-modal__cerrar:hover { color: var(--dl-texto-fuerte); }
+
+.dl-modal__cuerpo {
+  padding: var(--dl-space-5);
+  overflow-y: auto;
+}
+
+.dl-modal__pie {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--dl-space-3);
+  padding: var(--dl-space-4) var(--dl-space-5);
+  border-top: 1px solid var(--dl-borde-sutil);
+  flex: 0 0 auto;
+}
+
+/* Editor de specs (pares clave-valor libres del formulario de producto) */
+.dl-specs-fila {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: var(--dl-space-2);
+  margin-bottom: var(--dl-space-2);
+}
+
+/* Stock editable inline en la tabla de productos del admin */
+.dl-stock-inline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dl-stock-inline input {
+  width: 64px;
+  padding: 6px 8px;
+  border: 1px solid var(--dl-gris-borde);
+  border-radius: var(--dl-radio-sm);
+  font-size: .85rem;
+}
+
+@media (max-width: 480px) {
+  .dl-modal { max-height: 94vh; }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+/* Desktop: mega-menu visible, hamburguesa oculta (regla base ya cubre esto
+   via .dl-hamburguesa{display:none}). Mobile: se invierte. */
+@media (max-width: 1023px) {
+  .dl-nav { display: none; }              /* el panel deslizante lo reemplaza */
+  .dl-hamburguesa { display: inline-flex; }
+}
+
+@media (max-width: 1024px) {
+  .dl-pdp { grid-template-columns: 1fr; gap: 28px; }
+}
+
+@media (max-width: 860px) {
+  .dl-header__in { flex-wrap: wrap; gap: 12px; }
+  .dl-logo { order: 1; }
+  .dl-acciones { order: 2; margin-left: auto; }
+  .dl-buscador { order: 3; flex-basis: 100%; max-width: none; }
+  .dl-cuenta span { display: none; }         /* solo el icono en tablet */
+  .dl-cuenta { padding: 9px 12px; }
+  .dl-hero__slide { min-height: 260px; }
+  .dl-hero__flecha { width: 38px; height: 38px; }
+}
+
+@media (max-width: 620px) {
+  .dl-topbar__in { gap: 14px; font-size: .76rem; }
+  .dl-topbar__item--dir { display: none; }   /* la direccion vive en el footer */
+  .dl-seccion { padding: 34px 0; }
+  .dl-titulo-seccion { font-size: 1.4rem; }
+  .dl-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+  .dl-compra h1 { font-size: 1.35rem; }
+  .dl-compra__precio { font-size: 1.9rem; }
+  .dl-hero__slide { min-height: 190px; }
+  .dl-logo img { width: 118px; }
+}
+
+/* ========================================================================== 
+   Dirección visual Apple/macOS — blanco editorial, gris cálido y celeste
+   Dreamlike reservado para acciones y estados. Estas reglas redefinen los
+   componentes compartidos sin cambiar su estructura ni comportamiento.
+   ========================================================================== */
+
+.dl-topbar {
+  background: var(--dl-topbar);
+  color: var(--dl-gris-suave);
+  border-bottom: 1px solid var(--dl-borde-sutil);
+}
+.dl-topbar__in { min-height: 34px; gap: 22px; }
+.dl-topbar__item { color: var(--dl-gris-suave); }
+
+.dl-header {
+  background: rgba(255, 255, 255, .96);
+  border-bottom: 1px solid var(--dl-borde-sutil);
+}
+.dl-header__in { min-height: 76px; padding-top: 10px; padding-bottom: 10px; }
+.dl-logo img { width: 164px; }
+.dl-buscador { max-width: 580px; }
+.dl-buscador input {
+  background: var(--dl-gris-fondo);
+  border: 1px solid transparent;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  transition: background var(--dl-trans), border-color var(--dl-trans), box-shadow var(--dl-trans);
+}
+.dl-buscador input:focus {
+  background: var(--dl-blanco);
+  border-color: rgba(0, 119, 237, .45);
+  box-shadow: 0 0 0 4px rgba(0, 119, 237, .12);
+  outline: none;
+}
+.dl-cuenta {
+  color: var(--dl-texto-fuerte);
+  border-color: var(--dl-gris-borde);
+  background: var(--dl-blanco);
+}
+.dl-cuenta:hover { color: var(--dl-azul-hover); border-color: var(--dl-azul); background: var(--dl-azul-claro); }
+.dl-carrito { color: var(--dl-texto-fuerte); }
+.dl-carrito__n { background: var(--dl-azul); }
+.dl-hamburguesa { color: var(--dl-texto-fuerte); }
+
+.dl-nav { background: var(--dl-blanco); border-top: 1px solid var(--dl-borde-sutil); }
+.dl-nav__in::after { background: linear-gradient(90deg, transparent, var(--dl-blanco)); }
+.dl-nav__lista { justify-content: flex-start; gap: var(--dl-space-2); }
+.dl-nav__trigger { color: var(--dl-gris-texto); padding: 11px 12px; border-radius: var(--dl-radio-pill); }
+.dl-nav__trigger:hover, .dl-nav__trigger[aria-expanded="true"] { background: var(--dl-azul-claro); color: var(--dl-azul-oscuro); }
+.dl-mega { background: rgba(255,255,255,.98); border: 1px solid var(--dl-borde-sutil); border-top: 1px solid var(--dl-borde-sutil); }
+
+.dl-hero-wrap { padding-top: var(--dl-space-6); padding-bottom: var(--dl-space-4); }
+.dl-hero { border-radius: 28px; box-shadow: none; background: #EAF6FF; }
+.dl-hero__slide { min-height: 360px; }
+.dl-hero__slide--1, .dl-hero__slide--4 { background: linear-gradient(135deg, #0B76BC, #0EA5E9); }
+.dl-hero__slide--2 { background: linear-gradient(135deg, #146C91, #4BA9CF); }
+.dl-hero__slide--3 { background: linear-gradient(135deg, #08639E, #169EDA); }
+.dl-hero__titulo { font-size: clamp(2.25rem, 5.2vw, 4.75rem); font-weight: 700; text-shadow: none; }
+.dl-hero__flecha { background: rgba(255,255,255,.88); box-shadow: var(--dl-sombra-sm); }
+
+.dl-seccion--gris { background: var(--dl-gris-fondo); }
+.dl-sub-seccion { max-width: 620px; margin-left: auto; margin-right: auto; }
+.dl-card { border-radius: var(--dl-radio-lg); box-shadow: none; border-color: var(--dl-borde-sutil); }
+.dl-card:hover { transform: translateY(-3px); border-color: rgba(0, 119, 237, .45); box-shadow: var(--dl-sombra); }
+.dl-card__img { background: #FBFBFD; padding: 18px; }
+.dl-card__cuerpo { padding: 18px; }
+.dl-card__precio, .dl-compra__precio { color: var(--dl-texto-fuerte); }
+
+.dl-confianza { gap: 0; border: 1px solid var(--dl-borde-sutil); border-radius: var(--dl-radio-lg); background: var(--dl-blanco); overflow: hidden; }
+.dl-confianza__item { padding: 24px; }
+.dl-confianza__item + .dl-confianza__item { border-left: 1px solid var(--dl-borde-sutil); }
+.dl-confianza__item .dl-ico { color: var(--dl-azul); }
+.dl-cta { background: #0A7FC2; }
+.dl-footer { background: var(--dl-gris-fondo); }
+
+.dl-categoria-banner { border-radius: 28px; min-height: 220px; }
+.dl-galeria__principal { border-color: var(--dl-borde-sutil); border-radius: var(--dl-radio-lg); background: #FBFBFD; }
+.dl-tabs__btn { font-weight: 600; }
+
+@media (max-width: 860px) {
+  .dl-confianza__item + .dl-confianza__item { border-left: 0; }
+  .dl-confianza__item { border-bottom: 1px solid var(--dl-borde-sutil); }
+  .dl-confianza__item:last-child { border-bottom: 0; }
+}
+
+@media (max-width: 620px) {
+  .dl-header__in { min-height: 64px; }
+  .dl-hero { border-radius: 20px; }
+  .dl-hero__slide { min-height: 240px; }
+  .dl-seccion { padding: 48px 0; }
+}

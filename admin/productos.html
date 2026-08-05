@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Productos — Panel Admin Dreamlike</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/panel.css">
+</head>
+<body>
+
+<header class="dl-header">
+  <div class="dl-header__in">
+    <button class="dl-hamburguesa" id="btnMenuMobile" aria-label="Abrir menu" aria-expanded="false">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="dl-logo" href="index.html" aria-label="Panel Admin Dreamlike">
+      <img src="../assets/img/logo-oscuro.svg" alt="Dreamlike Electricidad">
+    </a>
+    <div class="dl-acciones" style="margin-left:auto">
+      <a class="dl-cuenta" href="../index.html">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+        <span>Ver tienda</span>
+      </a>
+    </div>
+  </div>
+  <nav class="dl-nav" aria-label="Categorias de productos">
+    <div class="dl-nav__in">
+      <ul class="dl-nav__lista" id="megaLista"></ul>
+    </div>
+  </nav>
+</header>
+
+<div class="dl-panel">
+
+  <aside class="dl-panel__sidebar">
+    <div class="dl-panel__perfil">
+      <div class="dl-panel__avatar" id="avatarIniciales">--</div>
+      <div>
+        <strong id="sidebarNombre">Cargando…</strong>
+        <span id="sidebarEmail"></span>
+      </div>
+    </div>
+    <nav class="dl-panel__nav">
+      <a href="index.html">
+        <svg class="dl-ico" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Dashboard
+      </a>
+      <a href="productos.html" class="dl-activo">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M20.5 7.3 12 12l-8.5-4.7M12 22V12M21 16.5V7.5a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4a2 2 0 0 0-1 1.7v9a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7Z"/></svg>
+        Productos
+      </a>
+      <a href="pedidos.html">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M9 8h3"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+        Pedidos
+      </a>
+      <button class="dl-salir" id="btnCerrarSesion" type="button">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+        Cerrar sesion
+      </button>
+    </nav>
+  </aside>
+
+  <main class="dl-panel__main">
+    <h1>Productos</h1>
+
+    <div class="dl-panel__seccion">
+      <div class="dl-panel__acciones" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+        <input type="search" id="buscarProducto" placeholder="Buscar por nombre o SKU..." style="max-width:280px;padding:9px 14px;border:1px solid var(--dl-gris-borde);border-radius:var(--dl-radio)">
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <span id="publicarEstado" style="font-size:.82rem;color:var(--dl-gris-suave);align-self:center"></span>
+          <button class="dl-btn dl-btn--secundario dl-btn--sm" type="button" id="btnPublicar">Publicar catalogo</button>
+          <button class="dl-btn dl-btn--secundario dl-btn--sm" type="button" id="btnImportar">Importar CSV/XML</button>
+          <button class="dl-btn dl-btn--primario dl-btn--sm" type="button" id="btnNuevoProducto">+ Nuevo producto</button>
+        </div>
+      </div>
+      <div class="dl-tabla-wrap">
+        <table class="dl-tabla">
+          <thead>
+            <tr><th></th><th>SKU</th><th>Nombre</th><th>Marca</th><th>Categoria</th><th>Precio</th><th>Stock</th><th></th></tr>
+          </thead>
+          <tbody id="tablaProductos"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ============================= MODAL PRODUCTO ============================= -->
+<div class="dl-modal-overlay" id="overlayProducto">
+  <div class="dl-modal">
+    <div class="dl-modal__cabecera">
+      <h2 id="tituloModalProducto">Nuevo producto</h2>
+      <button class="dl-modal__cerrar" type="button" data-cerrar-modal="overlayProducto" aria-label="Cerrar">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <form id="formProducto">
+      <div class="dl-modal__cuerpo">
+        <p class="dl-form-error" id="errorProducto" style="display:none;color:var(--dl-alerta);margin-bottom:14px"></p>
+        <div class="dl-form-grid">
+          <div class="dl-campo">
+            <label for="fSku">SKU</label>
+            <input type="text" id="fSku" required>
+          </div>
+          <div class="dl-campo">
+            <label for="fNombre">Nombre</label>
+            <input type="text" id="fNombre" required>
+          </div>
+          <div class="dl-campo">
+            <label for="fMarca">Marca</label>
+            <input type="text" id="fMarca" required>
+          </div>
+          <div class="dl-campo">
+            <label for="fCategoria">Categoria</label>
+            <select id="fCategoria" required></select>
+          </div>
+          <div class="dl-campo">
+            <label for="fPrecio">Precio (CLP)</label>
+            <input type="number" id="fPrecio" min="0" required>
+          </div>
+          <div class="dl-campo">
+            <label for="fStock">Stock</label>
+            <input type="number" id="fStock" min="0" required>
+          </div>
+          <div class="dl-campo">
+            <label for="fImagenArchivo">Imagen (JPG, PNG, WEBP o SVG, max 2MB)</label>
+            <input type="file" id="fImagenArchivo" accept="image/jpeg,image/png,image/webp,image/svg+xml">
+          </div>
+        </div>
+        <div class="dl-campo" style="margin-top:14px">
+          <label for="fDescripcion">Descripcion</label>
+          <textarea id="fDescripcion" rows="3" style="width:100%;padding:10px 12px;border:1px solid var(--dl-gris-borde);border-radius:var(--dl-radio);font-family:inherit"></textarea>
+        </div>
+        <div style="margin-top:14px">
+          <label style="display:block;margin-bottom:8px;font-weight:600;font-size:.9rem">Especificaciones</label>
+          <div id="specsFilas"></div>
+          <button class="dl-btn dl-btn--secundario dl-btn--sm" type="button" id="btnAgregarSpec">+ Agregar especificacion</button>
+        </div>
+      </div>
+      <div class="dl-modal__pie">
+        <button class="dl-btn dl-btn--secundario dl-btn--sm" type="button" data-cerrar-modal="overlayProducto">Cancelar</button>
+        <button class="dl-btn dl-btn--primario dl-btn--sm" type="submit" id="btnGuardarProducto">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============================= MODAL IMPORTAR ============================= -->
+<div class="dl-modal-overlay" id="overlayImportar">
+  <div class="dl-modal">
+    <div class="dl-modal__cabecera">
+      <h2>Importar productos</h2>
+      <button class="dl-modal__cerrar" type="button" data-cerrar-modal="overlayImportar" aria-label="Cerrar">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="dl-modal__cuerpo">
+      <p style="font-size:.88rem;color:var(--dl-gris-suave);margin-bottom:14px">
+        Archivo CSV (columnas: sku,nombre,marca,categoria,precio,stock — opcionales:
+        categoriaSlug,imagen,descripcion) o XML (<code>&lt;productos&gt;&lt;producto&gt;...</code>).
+        Los productos se crean o actualizan por SKU — filas invalidas no detienen el resto.
+      </p>
+      <input type="file" id="archivoImportar" accept=".csv,.xml">
+      <div id="resultadoImportar" style="margin-top:16px;font-size:.88rem"></div>
+    </div>
+    <div class="dl-modal__pie">
+      <button class="dl-btn dl-btn--secundario dl-btn--sm" type="button" data-cerrar-modal="overlayImportar">Cerrar</button>
+      <button class="dl-btn dl-btn--primario dl-btn--sm" type="button" id="btnEjecutarImportar">Importar</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/categorias-fallback.js"></script>
+<script src="../assets/js/mega-menu.js"></script>
+<script src="../assets/js/productos-fallback.js"></script>
+<script src="../assets/js/admin-comun.js"></script>
+<script src="../assets/js/admin-productos.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carrito de compras — Dreamlike Electricidad</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/panel.css">
+</head>
+<body>
+
+<!-- ============================= TOPBAR ============================= -->
+<div class="dl-topbar">
+  <div class="dl-topbar__in">
+    <a class="dl-topbar__item dl-topbar__item--dir" href="https://maps.google.com/?q=Av.+El+Ventisquero+1225+Bod.+49,+Renca" target="_blank" rel="noopener">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      Av. El Ventisquero 1225 Bod. 49, Renca
+    </a>
+    <a class="dl-topbar__item" href="mailto:ventasweb@dreamlike.cl">
+      <svg class="dl-ico" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      ventasweb@dreamlike.cl
+    </a>
+    <a class="dl-topbar__item" href="https://wa.me/56933713900" target="_blank" rel="noopener">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20l1.05-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+      +56933713900
+    </a>
+  </div>
+</div>
+
+<!-- ============================= HEADER ============================= -->
+<header class="dl-header">
+  <div class="dl-header__in">
+    <button class="dl-hamburguesa" id="btnMenuMobile" aria-label="Abrir menu" aria-expanded="false">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <a class="dl-logo" href="index.html" aria-label="Dreamlike Electricidad — inicio">
+      <img src="assets/img/logo-oscuro.svg" alt="Dreamlike Electricidad">
+    </a>
+
+    <form class="dl-buscador" action="index.html" method="get" role="search">
+      <svg class="dl-buscador__ico dl-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" name="q" placeholder="Buscar en Dreamlike..." aria-label="Buscar productos">
+    </form>
+
+    <div class="dl-acciones">
+      <a class="dl-cuenta" id="headerCuenta" href="login.html" aria-label="Iniciar sesion">
+        <svg class="dl-ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <span>Iniciar Sesion</span>
+      </a>
+      <a class="dl-carrito" href="carrito.html" aria-label="Ver carrito" aria-current="page">
+        <svg class="dl-ico" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1.2"/><circle cx="18" cy="21" r="1.2"/><path d="M2 3h3l2.6 12.4A2 2 0 0 0 9.5 17H18a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+        <span class="dl-carrito__n" id="carritoContador">0</span>
+      </a>
+    </div>
+  </div>
+
+  <nav class="dl-nav" aria-label="Categorias de productos">
+    <div class="dl-nav__in">
+      <ul class="dl-nav__lista" id="megaLista"></ul>
+    </div>
+  </nav>
+</header>
+
+<main class="dl-wrap dl-seccion">
+
+  <nav class="dl-breadcrumb" aria-label="Miga de pan">
+    <a href="index.html">Inicio</a><span>›</span>
+    Carrito de compras
+  </nav>
+
+  <h1>Tu carrito</h1>
+
+  <!-- Contenido cuando hay items -->
+  <div id="carritoConItems" class="dl-carrito-layout" hidden>
+    <div class="dl-panel__seccion" style="margin-bottom:0">
+      <div class="dl-tabla-wrap">
+        <table class="dl-tabla">
+          <thead>
+            <tr><th></th><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th><th></th></tr>
+          </thead>
+          <tbody id="tablaCarrito"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="dl-panel__seccion" style="margin-bottom:0">
+      <h2>Resumen</h2>
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px;color:var(--dl-gris-suave)">
+        <span>Subtotal</span><span id="resumenSubtotal">$0</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:16px;font-size:.85rem;color:var(--dl-gris-suave)">
+        <span>IVA</span><span>Incluido</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;border-top:1px solid var(--dl-gris-borde);padding-top:14px;margin-bottom:20px;font-weight:800;font-size:1.15rem">
+        <span>Total</span><span id="resumenTotal">$0</span>
+      </div>
+      <button class="dl-btn dl-btn--primario dl-btn--bloque" style="margin-bottom:10px" id="btnComprar" type="button">
+        <svg class="dl-ico" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        Comprar
+      </button>
+      <button class="dl-btn dl-btn--secundario dl-btn--bloque" id="btnSolicitarCotizacion" style="margin-bottom:10px" type="button">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M9 8h3"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+        Solicitar cotizacion
+      </button>
+      <a class="dl-btn dl-btn--wsp dl-btn--bloque" id="btnCotizarCarritoWsp" href="https://wa.me/56933713900" target="_blank" rel="noopener">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20l1.05-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+        Cotizar por WhatsApp
+      </a>
+      <p class="dl-carrito__aviso-pago" id="avisoComprar" hidden>
+        Pago en linea disponible pronto. Mientras tanto, cotiza por WhatsApp o solicita tu cotizacion.
+      </p>
+      <p style="font-size:.78rem;color:var(--dl-gris-suave);margin:14px 0 0;text-align:center">
+        Prototipo: el pago se coordina hoy por WhatsApp o mail. "Solicitar cotizacion"
+        requiere sesion y queda registrada en tu perfil.
+      </p>
+    </div>
+  </div>
+
+  <!-- Carrito vacio -->
+  <div id="carritoVacio" class="dl-panel__seccion" style="text-align:center;padding:60px 24px" hidden>
+    <svg class="dl-ico" viewBox="0 0 24 24" style="width:56px;height:56px;color:var(--dl-gris-borde);margin:0 auto 16px"><circle cx="9" cy="21" r="1.2"/><circle cx="18" cy="21" r="1.2"/><path d="M2 3h3l2.6 12.4A2 2 0 0 0 9.5 17H18a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+    <h2>Tu carrito esta vacio</h2>
+    <p style="color:var(--dl-gris-suave);margin-bottom:22px">Explora el catalogo y agrega productos.</p>
+    <a class="dl-btn dl-btn--primario" href="index.html">Ver productos</a>
+  </div>
+
+</main>
+
+<footer class="dl-footer">
+  <div class="dl-wrap">
+    <div class="dl-footer__legal">
+      © 2026 Dreamlike Electricidad. Prototipo de sitio — catalogo de demostracion.
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/carrito.js"></script>
+<script src="assets/js/auth-modal.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/categorias-fallback.js"></script>
+<script src="assets/js/mega-menu.js"></script>
+<script src="assets/js/productos-fallback.js"></script>
+<script src="assets/js/buscador.js"></script>
+<script src="assets/js/carrito-pagina.js"></script>
+<script src="assets/js/whatsapp-flotante.js"></script>
+</body>
+</html>

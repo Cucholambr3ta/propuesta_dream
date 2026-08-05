@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Categoria Panel Solar 450W">
+  <rect width="220" height="220" fill="#E7F1FE"/>
+  <rect x="1" y="1" width="218" height="218" fill="none" stroke="#C6DFFB" stroke-width="2"/>
+  <g stroke="#1D4ED8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <rect x="45" y="55" width="130" height="110" rx="8"/><path d="M45 90h130M45 125h130M90 55v110M135 55v110"/>
+  </g>
+</svg>

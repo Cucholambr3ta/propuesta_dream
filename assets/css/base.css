@@ -1,0 +1,352 @@
+/* ==========================================================================
+   Dreamlike — base.css
+   Reset, tokens de diseno y utilidades.
+   Paleta segun acuerdos/design/paleta.md
+   ========================================================================== */
+
+:root {
+  /* Color */
+  --dl-azul:        #0077ED;
+  --dl-azul-hover:  #0071E3;
+  --dl-azul-oscuro: #005BB5;
+  --dl-azul-claro:  #EAF6FF;
+  --dl-topbar:      #F5F5F7;
+  --dl-blanco:      #FFFFFF;
+  --dl-gris-texto:  #1D1D1F;
+  --dl-gris-suave:  #6E6E73;
+  --dl-gris-borde:  #D2D2D7;
+  --dl-gris-fondo:  #F5F5F7;
+  --dl-exito:       #16A34A;
+  --dl-alerta:      #D97706;
+
+  /* Superficies neutras — reemplazan el azul solido en bloques grandes
+     (header, nav) por una base clara con el acento reservado a texto/hover */
+  --dl-superficie:       #FFFFFF;
+  --dl-superficie-sutil: #FBFBFD;
+  --dl-borde-sutil:      #E5E5EA;
+  --dl-texto-fuerte:     #1D1D1F;
+
+  /* Tipografia — stack del sistema, sin dependencias externas */
+  --dl-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Escala tipografica modular (base 16px, ratio ~1.25) */
+  --dl-fs-xs:   .75rem;    /* 12px — metadatos, badges, topbar */
+  --dl-fs-sm:   .875rem;   /* 14px — texto secundario, breadcrumb */
+  --dl-fs-base: 1rem;      /* 16px — cuerpo */
+  --dl-fs-md:   1.125rem;  /* 18px — cuerpo destacado, subtitulos */
+  --dl-fs-lg:   1.5rem;    /* 24px — h3, mega-menu, cards destacadas */
+  --dl-fs-xl:   2rem;      /* 32px — h2 de seccion */
+  --dl-fs-2xl:  2.75rem;   /* 44px — h1 de pagina */
+
+  /* Pesos — 700 como maximo (antes 800), look mas fino tipo Stripe/Linear */
+  --dl-fw-regular: 400;
+  --dl-fw-medium:  500;
+  --dl-fw-bold:    700;
+
+  /* Tracking para titulares grandes, look editorial fino */
+  --dl-tracking-tight: -.03em;
+
+  /* Espaciado — escala consistente, reemplaza el --dl-gap monolitico */
+  --dl-space-1: 4px;
+  --dl-space-2: 8px;
+  --dl-space-3: 12px;
+  --dl-space-4: 16px;
+  --dl-space-5: 24px;
+  --dl-space-6: 32px;
+  --dl-space-7: 48px;
+  --dl-space-8: 64px;
+
+  /* Layout */
+  --dl-max: 1200px;
+  --dl-gap: var(--dl-space-5);
+  --dl-radio-sm: 10px;   /* inputs, badges pequenos */
+  --dl-radio: 14px;      /* cards, botones */
+  --dl-radio-lg: 22px;   /* superficies flotantes: mega-menu, panel mobile, modales */
+  --dl-radio-pill: 999px;
+
+  /* Sombra — muy difusa y suave, look macOS/apple.com (nunca dura ni marcada) */
+  --dl-sombra-sm: 0 1px 2px rgba(0, 0, 0, .05);
+  --dl-sombra: 0 4px 14px rgba(0, 0, 0, .08);
+  --dl-sombra-md: 0 12px 28px rgba(0, 0, 0, .10);
+  --dl-sombra-alta: 0 24px 56px rgba(0, 0, 0, .16);
+
+  /* Vidrio esmerilado — mega-menu/modales flotando sobre contenido. Opacidad
+     alta (no el .7-.8 tipico de macOS) porque el fondo de la pagina es un
+     gradiente azul vivo, no el escritorio neutro de macOS — con menos
+     opacidad el texto oscuro pierde contraste AA contra el azul de fondo. */
+  --dl-vidrio-fondo: rgba(255, 255, 255, .92);
+  --dl-vidrio-blur: saturate(180%) blur(20px);
+
+  /* Acceso — variante clara para formularios compactos */
+  --dl-auth-fondo-tab: #EFF6FB;
+  --dl-auth-texto-tab: #3D6480;
+  --dl-auth-gradiente-tab: #079BCB;
+  --dl-auth-borde-campo: #D6E3ED;
+  --dl-auth-icono: #84A0B5;
+  --dl-auth-texto-secundario: #466479;
+  --dl-auth-boton-inicio: #2C2C2C;
+  --dl-auth-boton-fin: #050505;
+
+  /* Transicion */
+  --dl-trans: .18s ease;
+}
+
+/* --- Reset ---------------------------------------------------------------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--dl-font);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--dl-gris-texto);
+  background: var(--dl-blanco);
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 .5em;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+  color: var(--dl-texto-fuerte);
+}
+
+/* Jerarquia real: 800 se reserva para hero/logo, el resto usa 700/600 */
+h1 { font-size: var(--dl-fs-2xl); font-weight: var(--dl-fw-bold); letter-spacing: var(--dl-tracking-tight); }
+h2 { font-size: var(--dl-fs-xl); font-weight: 700; }
+h3 { font-size: var(--dl-fs-lg); font-weight: var(--dl-fw-medium); }
+h4 { font-size: var(--dl-fs-md); font-weight: var(--dl-fw-medium); }
+
+p { margin: 0 0 1em; }
+
+a {
+  color: var(--dl-azul-hover); /* nunca --dl-azul sobre blanco: contraste AA */
+  text-decoration: none;
+}
+
+a:hover { text-decoration: underline; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+table { border-collapse: collapse; width: 100%; }
+
+/* Foco visible — accesibilidad de teclado */
+:focus-visible {
+  outline: 3px solid var(--dl-azul-oscuro);
+  outline-offset: 2px;
+}
+
+/* --- Utilidades ----------------------------------------------------------- */
+
+.dl-wrap {
+  max-width: var(--dl-max);
+  margin: 0 auto;
+  padding: 0 var(--dl-gap);
+}
+
+.dl-seccion { padding: 72px 0; }
+
+/* --- Campos de formulario ---------------------------------------------------
+   Compartido por TODAS las paginas (login, mi-cuenta, admin, y el modal de
+   auth en index/categoria/producto/carrito/marca) — no depende de panel.css,
+   que index.html y producto.html no cargan. */
+
+.dl-campo { margin-bottom: var(--dl-space-4); }
+
+.dl-campo label {
+  display: block;
+  font-size: var(--dl-fs-sm);
+  font-weight: 700;
+  color: #222;
+  margin-bottom: var(--dl-space-2);
+}
+
+.dl-campo input,
+.dl-campo select {
+  width: 100%;
+  padding: var(--dl-space-3) var(--dl-space-4);
+  border: 1px solid var(--dl-gris-borde);
+  border-radius: var(--dl-radio-sm);
+  background: var(--dl-blanco);
+  color: var(--dl-gris-texto);
+}
+.dl-campo input:focus,
+.dl-campo select:focus {
+  border-color: var(--dl-azul);
+}
+
+.dl-auth__error {
+  color: #B91C1C;
+  font-size: var(--dl-fs-sm);
+  margin: calc(var(--dl-space-2) * -1) 0 var(--dl-space-4);
+  display: none;
+}
+.dl-auth__error--visible { display: block; }
+
+/* Aviso de "proximamente" — boton Comprar del carrito, antes de integrar
+   la pasarela de pago real (MercadoPago via plugin WordPress). */
+.dl-carrito__aviso-pago {
+  background: var(--dl-azul-claro);
+  color: var(--dl-azul-oscuro);
+  border-radius: var(--dl-radio);
+  padding: var(--dl-space-3) var(--dl-space-4);
+  font-size: var(--dl-fs-sm);
+  margin: 10px 0 0;
+  text-align: center;
+}
+
+/* Burbuja flotante de WhatsApp — assets/js/whatsapp-flotante.js, todas las
+   paginas publicas. Encima del contenido pero por debajo de modales/drawers
+   (mega-menu z-index:40, mega/modal 100+) para no taparlos si coinciden. */
+.dl-wsp-flotante {
+  position: fixed;
+  right: var(--dl-space-5);
+  bottom: var(--dl-space-5);
+  width: 56px; height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--dl-exito);
+  color: var(--dl-blanco);
+  box-shadow: var(--dl-sombra-md);
+  z-index: 60;
+  transition: transform var(--dl-trans), background var(--dl-trans);
+}
+.dl-wsp-flotante:hover {
+  background: #12833B;
+  transform: scale(1.06);
+  text-decoration: none;
+}
+.dl-wsp-flotante .dl-ico { width: 30px; height: 30px; }
+
+@media (max-width: 620px) {
+  .dl-wsp-flotante {
+    right: var(--dl-space-4);
+    bottom: var(--dl-space-4);
+    width: 50px; height: 50px;
+  }
+  .dl-wsp-flotante .dl-ico { width: 26px; height: 26px; }
+}
+
+.dl-titulo-seccion {
+  font-size: var(--dl-fs-xl);
+  letter-spacing: var(--dl-tracking-tight);
+  text-align: center;
+  margin-bottom: var(--dl-space-2);
+}
+
+.dl-sub-seccion {
+  text-align: center;
+  color: var(--dl-gris-suave);
+  margin-bottom: var(--dl-space-6);
+}
+
+/* Solo para lectores de pantalla */
+.dl-sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Botones — pill shape, look macOS/apple.com */
+.dl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--dl-space-2);
+  padding: 11px 20px;
+  border-radius: var(--dl-radio-pill);
+  font-weight: 600;
+  text-align: center;
+  transition: background var(--dl-trans), color var(--dl-trans), border-color var(--dl-trans), transform .15s ease, box-shadow var(--dl-trans);
+}
+
+.dl-btn:hover { text-decoration: none; }
+.dl-btn:active { transform: scale(.98); }
+
+.dl-btn--primario {
+  background: var(--dl-azul);
+  color: var(--dl-blanco);
+  box-shadow: var(--dl-sombra-sm);
+}
+.dl-btn--primario:hover { background: var(--dl-azul-hover); box-shadow: var(--dl-sombra); }
+
+.dl-btn--secundario {
+  background: var(--dl-blanco);
+  color: var(--dl-gris-texto);
+  border: 1.5px solid var(--dl-gris-borde);
+}
+.dl-btn--secundario:hover {
+  background: var(--dl-azul-claro);
+  border-color: var(--dl-azul);
+  color: var(--dl-azul-hover);
+}
+
+.dl-btn--wsp {
+  background: var(--dl-exito);
+  color: var(--dl-blanco);
+}
+.dl-btn--wsp:hover { background: #12833B; }
+
+.dl-btn--bloque { width: 100%; }
+
+/* Badges */
+.dl-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: var(--dl-radio-pill);
+  font-size: .75rem;
+  font-weight: 700;
+}
+
+.dl-badge--stock  { background: #E8F7EE; color: var(--dl-exito); }
+.dl-badge--pocas  { background: #FDF3E2; color: var(--dl-alerta); }
+.dl-badge--cat    { background: var(--dl-azul-claro); color: var(--dl-azul-oscuro); }
+
+/* Iconos SVG inline */
+.dl-ico {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

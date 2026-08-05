@@ -1,0 +1,853 @@
+window.DL_PRODUCTOS_FALLBACK = [
+    {
+        "sku": "CBL-THHN-2.5-NEG",
+        "nombre": "Cable THHN 2.5mm² Negro (rollo 100m)",
+        "marca": "Covisa",
+        "categoria": "Conductores",
+        "categoriaSlug": "conductores",
+        "precio": 89000,
+        "stock": 240,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Cable THHN de cobre solido, aislacion PVC resistente a la humedad y calor. Uso en instalaciones residenciales e industriales bajo NCh 4\/2003.",
+        "specs": {
+            "Color": "Negro",
+            "Norma": "NCh 4\/2003",
+            "Seccion": "2.5 mm²",
+            "Aislacion": "PVC 90°C",
+            "Presentacion": "Rollo 100 m",
+            "Material conductor": "Cobre electrolitico"
+        }
+    },
+    {
+        "sku": "PLC-S7-1200",
+        "nombre": "PLC Compacto S7-1200 CPU 1214C",
+        "marca": "Siemens",
+        "categoria": "Automatizacion y Control",
+        "categoriaSlug": "automatizacion",
+        "precio": 385000,
+        "stock": 12,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Controlador logico programable para automatizacion de procesos industriales de pequena y mediana escala. Incluye 14 DI \/ 10 DO \/ 2 AI.",
+        "specs": {
+            "Alimentacion": "24V DC",
+            "Comunicacion": "Ethernet \/ PROFINET",
+            "Salidas digitales": "10",
+            "Entradas digitales": "14",
+            "Entradas analogicas": "2"
+        }
+    },
+    {
+        "sku": "TUB-EMT-20",
+        "nombre": "Tubo EMT 20mm x 3m",
+        "marca": "Conduit Chile",
+        "categoria": "Canalizacion",
+        "categoriaSlug": "canalizacion",
+        "precio": 4290,
+        "stock": 560,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Tubo metalico electrico tipo EMT, galvanizado, para canalizacion superficial y embutida.",
+        "specs": {
+            "Largo": "3 m",
+            "Norma": "NCh Elec. 4\/2003",
+            "Diametro": "20 mm (3\/4\")",
+            "Material": "Acero galvanizado"
+        }
+    },
+    {
+        "sku": "CAM-DOM-4MP",
+        "nombre": "Camara Domo IP 4MP Vision Nocturna",
+        "marca": "Hikvision",
+        "categoria": "CCTV y Seguridad",
+        "categoriaSlug": "cctv",
+        "precio": 62900,
+        "stock": 34,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Camara domo IP de 4 megapixeles con vision nocturna IR hasta 30m, IP67 para exteriores.",
+        "specs": {
+            "PoE": "Si",
+            "Lente": "2.8 mm fijo",
+            "Alcance IR": "30 m",
+            "Proteccion": "IP67",
+            "Resolucion": "4 MP"
+        }
+    },
+    {
+        "sku": "TER-CU-4",
+        "nombre": "Terminal de Cobre Tipo Ojo 4mm² (bolsa 50u)",
+        "marca": "Legrand",
+        "categoria": "Conectores y Terminales",
+        "categoriaSlug": "conectores",
+        "precio": 8900,
+        "stock": 180,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Terminal de compresion tipo ojo para conductores de cobre, estanado para mejor conductividad.",
+        "specs": {
+            "Seccion": "4 mm²",
+            "Material": "Cobre estanado",
+            "Presentacion": "Bolsa 50 unidades"
+        }
+    },
+    {
+        "sku": "ENC-SCHUKO-B",
+        "nombre": "Enchufe Schuko Blanco con Puesta a Tierra",
+        "marca": "Bticino",
+        "categoria": "Enchufes e Interruptores",
+        "categoriaSlug": "enchufes",
+        "precio": 3490,
+        "stock": 410,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Enchufe tipo Schuko con contacto de puesta a tierra, color blanco, linea residencial.",
+        "specs": {
+            "Color": "Blanco",
+            "Voltaje": "250 V",
+            "Amperaje": "16 A",
+            "Con tierra": "Si"
+        }
+    },
+    {
+        "sku": "LED-PANEL-60",
+        "nombre": "Panel LED 60x60 40W Luz Dia",
+        "marca": "Philips",
+        "categoria": "Iluminacion",
+        "categoriaSlug": "iluminacion",
+        "precio": 21900,
+        "stock": 96,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Panel LED empotrable para cielo falso, ideal para oficinas y comercios. Bajo consumo.",
+        "specs": {
+            "Medidas": "60 x 60 cm",
+            "Potencia": "40 W",
+            "Vida util": "30.000 h",
+            "Temperatura de color": "6500K (luz dia)"
+        }
+    },
+    {
+        "sku": "TAL-ATOR-1\/2",
+        "nombre": "Atornillador de Impacto 1\/2\" 20V",
+        "marca": "Bosch",
+        "categoria": "Herramientas",
+        "categoriaSlug": "herramientas",
+        "precio": 128000,
+        "stock": 18,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Atornillador de impacto inalambrico, incluye bateria 20V y cargador. Torque alto para trabajo pesado.",
+        "specs": {
+            "Incluye": "Bateria + cargador",
+            "Mandril": "1\/2\" hexagonal",
+            "Voltaje": "20 V",
+            "Torque maximo": "180 Nm"
+        }
+    },
+    {
+        "sku": "FER-TORN-M8",
+        "nombre": "Tornillo Hexagonal M8x40 (caja 100u)",
+        "marca": "Fischer",
+        "categoria": "Ferreteria",
+        "categoriaSlug": "ferreteria",
+        "precio": 12900,
+        "stock": 320,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Tornillo hexagonal galvanizado M8x40mm, uso estructural y de montaje electrico.",
+        "specs": {
+            "Cabeza": "Hexagonal",
+            "Medida": "M8 x 40 mm",
+            "Acabado": "Galvanizado",
+            "Presentacion": "Caja 100 unidades"
+        }
+    },
+    {
+        "sku": "PAN-SOLAR-450",
+        "nombre": "Panel Solar Monocristalino 450W",
+        "marca": "Jinko Solar",
+        "categoria": "Energias Renovables",
+        "categoriaSlug": "renovables",
+        "precio": 145000,
+        "stock": 40,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Panel solar monocristalino de alta eficiencia para instalaciones residenciales e industriales.",
+        "specs": {
+            "Garantia": "25 anos",
+            "Potencia": "450 W",
+            "Eficiencia": "21.3%",
+            "Tecnologia": "Monocristalino PERC"
+        }
+    },
+    {
+        "sku": "BRK-DIFF-2P-40",
+        "nombre": "Interruptor Diferencial 2P 40A 30mA",
+        "marca": "Schneider Electric",
+        "categoria": "Automatizacion y Control",
+        "categoriaSlug": "automatizacion",
+        "precio": 34900,
+        "stock": 75,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Proteccion diferencial de 2 polos para tableros electricos residenciales e industriales.",
+        "specs": {
+            "Norma": "IEC 61008",
+            "Polos": "2",
+            "Sensibilidad": "30 mA",
+            "Corriente nominal": "40 A"
+        }
+    },
+    {
+        "sku": "CAN-PVC-40X25",
+        "nombre": "Canaleta PVC 40x25mm (barra 2m)",
+        "marca": "Legrand",
+        "categoria": "Canalizacion",
+        "categoriaSlug": "canalizacion",
+        "precio": 3990,
+        "stock": 210,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Canaleta de PVC autoextinguible para conduccion de cableado en instalaciones vistas.",
+        "specs": {
+            "Color": "Blanco",
+            "Largo": "2 m",
+            "Medidas": "40 x 25 mm",
+            "Material": "PVC autoextinguible"
+        }
+    },
+    {
+        "sku": "CBL-NYA-4-ROJ",
+        "nombre": "Alambre NYA 4mm² Rojo (rollo 100m)",
+        "marca": "Covisa",
+        "categoria": "Conductores",
+        "categoriaSlug": "conductores",
+        "precio": 112000,
+        "stock": 85,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Alambre NYA de cobre flexible, aislacion PVC, uso en instalaciones domiciliarias e industriales.",
+        "specs": {
+            "Color": "Rojo",
+            "Norma": "NCh 4\/2003",
+            "Seccion": "4 mm²",
+            "Material conductor": "Cobre electrolitico flexible"
+        }
+    },
+    {
+        "sku": "CBL-LSOH-2.5",
+        "nombre": "Cable Libre de Halogeno 2.5mm² (rollo 100m)",
+        "marca": "Prysmian",
+        "categoria": "Conductores",
+        "categoriaSlug": "conductores",
+        "precio": 135000,
+        "stock": 40,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Cable LSOH de baja emision de humo y gases toxicos, para instalaciones con alta exigencia de seguridad (hospitales, edificios publicos).",
+        "specs": {
+            "Uso": "Espacios de alta concurrencia",
+            "Tipo": "Libre de Halogeno (LSOH)",
+            "Norma": "IEC 60332-3",
+            "Seccion": "2.5 mm²"
+        }
+    },
+    {
+        "sku": "CBL-SOLAR-6",
+        "nombre": "Cable Solar 6mm² Negro (rollo 100m)",
+        "marca": "Covisa",
+        "categoria": "Conductores",
+        "categoriaSlug": "conductores",
+        "precio": 98000,
+        "stock": 60,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Cable unipolar para instalaciones fotovoltaicas, resistente a UV e intemperie.",
+        "specs": {
+            "Uso": "Instalaciones fotovoltaicas",
+            "Color": "Negro",
+            "Seccion": "6 mm²",
+            "Resistencia UV": "Si"
+        }
+    },
+    {
+        "sku": "TER-OJO-4",
+        "nombre": "Terminal Tipo Ojo 4mm² (bolsa 50u)",
+        "marca": "Legrand",
+        "categoria": "Conductores",
+        "categoriaSlug": "conductores",
+        "precio": 7900,
+        "stock": 220,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Terminal de compresion tipo ojo, cobre estanado, para conexion de conductores a barras y equipos.",
+        "specs": {
+            "Seccion": "4 mm²",
+            "Material": "Cobre estanado",
+            "Presentacion": "Bolsa 50 unidades"
+        }
+    },
+    {
+        "sku": "BAR-CU-PT",
+        "nombre": "Barra de Cobre Puesta a Tierra 50x5mm x 1m",
+        "marca": "Erico",
+        "categoria": "Conductores",
+        "categoriaSlug": "conductores",
+        "precio": 45900,
+        "stock": 30,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Barra de cobre electrolitico para sistemas de puesta a tierra en tableros y salas electricas.",
+        "specs": {
+            "Uso": "Puesta a tierra",
+            "Medidas": "50 x 5 mm x 1 m",
+            "Material": "Cobre electrolitico"
+        }
+    },
+    {
+        "sku": "TUB-COND-20",
+        "nombre": "Tubo Conduit PVC 20mm x 3m",
+        "marca": "Conduit Chile",
+        "categoria": "Canalizacion",
+        "categoriaSlug": "canalizacion",
+        "precio": 2890,
+        "stock": 480,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Tubo PVC liviano para canalizacion embutida en muro y losa, autoextinguible.",
+        "specs": {
+            "Largo": "3 m",
+            "Diametro": "20 mm (3\/4\")",
+            "Material": "PVC rigido autoextinguible"
+        }
+    },
+    {
+        "sku": "CAN-RAN-20X12",
+        "nombre": "Canaleta Ranurada 20x12mm (barra 2m)",
+        "marca": "Legrand",
+        "categoria": "Canalizacion",
+        "categoriaSlug": "canalizacion",
+        "precio": 2490,
+        "stock": 190,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Canaleta ranurada para organizacion de cableado en tableros electricos.",
+        "specs": {
+            "Largo": "2 m",
+            "Medidas": "20 x 12 mm",
+            "Material": "PVC ranurado"
+        }
+    },
+    {
+        "sku": "TUB-GALV-25",
+        "nombre": "Tubo Galvanizado ANSI 25mm x 3m",
+        "marca": "Conduit Chile",
+        "categoria": "Canalizacion",
+        "categoriaSlug": "canalizacion",
+        "precio": 8900,
+        "stock": 140,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Tubo metalico galvanizado en caliente, norma ANSI, para instalaciones industriales expuestas.",
+        "specs": {
+            "Largo": "3 m",
+            "Diametro": "25 mm (1\")",
+            "Material": "Acero galvanizado ANSI"
+        }
+    },
+    {
+        "sku": "FLEX-MET-20",
+        "nombre": "Flexible Metalico 20mm (rollo 10m)",
+        "marca": "Conduit Chile",
+        "categoria": "Canalizacion",
+        "categoriaSlug": "canalizacion",
+        "precio": 15900,
+        "stock": 75,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Conducto flexible metalico para conexiones a equipos con vibracion o movimiento.",
+        "specs": {
+            "Diametro": "20 mm",
+            "Material": "Acero flexible galvanizado",
+            "Presentacion": "Rollo 10 m"
+        }
+    },
+    {
+        "sku": "BRK-AUT-1P-16",
+        "nombre": "Automatico 1P 16A 6kA Curva C",
+        "marca": "Schneider Electric",
+        "categoria": "Automatizacion y Control",
+        "categoriaSlug": "automatizacion",
+        "precio": 6900,
+        "stock": 310,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Interruptor automatico termomagnetico monopolar, proteccion de circuitos residenciales.",
+        "specs": {
+            "Curva": "C",
+            "Polos": "1",
+            "Poder de corte": "6 kA",
+            "Corriente nominal": "16 A"
+        }
+    },
+    {
+        "sku": "CONT-SCH-25A",
+        "nombre": "Contactor Tripolar 25A 220V",
+        "marca": "Schneider Electric",
+        "categoria": "Automatizacion y Control",
+        "categoriaSlug": "automatizacion",
+        "precio": 42900,
+        "stock": 55,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Contactor electromagnetico tripolar para arranque y control de motores.",
+        "specs": {
+            "Polos": "3",
+            "Bobina": "220V AC",
+            "Corriente nominal": "25 A"
+        }
+    },
+    {
+        "sku": "RELE-TERM-9-13",
+        "nombre": "Rele Termico 9-13A",
+        "marca": "Siemens",
+        "categoria": "Automatizacion y Control",
+        "categoriaSlug": "automatizacion",
+        "precio": 28900,
+        "stock": 48,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Rele de proteccion termica ajustable para motores trifasicos.",
+        "specs": {
+            "Uso": "Proteccion de motores",
+            "Tipo": "Bimetalico",
+            "Rango de ajuste": "9-13 A"
+        }
+    },
+    {
+        "sku": "VAR-FREC-1HP",
+        "nombre": "Variador de Frecuencia 1HP Monofasico",
+        "marca": "Siemens",
+        "categoria": "Automatizacion y Control",
+        "categoriaSlug": "automatizacion",
+        "precio": 215000,
+        "stock": 15,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Variador de velocidad para motores monofasicos, control de arranque y frenado.",
+        "specs": {
+            "Salida": "Trifasica",
+            "Potencia": "1 HP",
+            "Alimentacion": "220V monofasico"
+        }
+    },
+    {
+        "sku": "SENS-MOV-360",
+        "nombre": "Sensor de Movimiento 360° Techo",
+        "marca": "Legrand",
+        "categoria": "Automatizacion y Control",
+        "categoriaSlug": "automatizacion",
+        "precio": 18900,
+        "stock": 90,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Sensor de movimiento infrarrojo para encendido automatico de iluminacion.",
+        "specs": {
+            "Alcance": "8 m",
+            "Montaje": "Techo",
+            "Angulo de deteccion": "360°"
+        }
+    },
+    {
+        "sku": "CAM-BUL-4MP",
+        "nombre": "Camara Bullet IP 4MP Exterior",
+        "marca": "Hikvision",
+        "categoria": "CCTV y Seguridad",
+        "categoriaSlug": "cctv",
+        "precio": 58900,
+        "stock": 42,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Camara bullet IP para exterior, vision nocturna 30m, resistente a la intemperie.",
+        "specs": {
+            "Alcance IR": "30 m",
+            "Proteccion": "IP67",
+            "Resolucion": "4 MP"
+        }
+    },
+    {
+        "sku": "NVR-8CH",
+        "nombre": "NVR 8 Canales 4K",
+        "marca": "Hikvision",
+        "categoria": "CCTV y Seguridad",
+        "categoriaSlug": "cctv",
+        "precio": 145000,
+        "stock": 20,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Grabador de video en red para 8 camaras IP, soporta resolucion 4K.",
+        "specs": {
+            "Canales": "8",
+            "Salida de video": "HDMI\/VGA",
+            "Resolucion maxima": "4K"
+        }
+    },
+    {
+        "sku": "SW-POE-8P",
+        "nombre": "Switch PoE 8 Puertos",
+        "marca": "Hikvision",
+        "categoria": "CCTV y Seguridad",
+        "categoriaSlug": "cctv",
+        "precio": 52900,
+        "stock": 35,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Switch de red con alimentacion PoE para camaras IP, 8 puertos + 2 uplink.",
+        "specs": {
+            "Puertos PoE": "8",
+            "Puertos uplink": "2",
+            "Potencia total PoE": "120W"
+        }
+    },
+    {
+        "sku": "HDD-CCTV-2TB",
+        "nombre": "Disco Duro para CCTV 2TB",
+        "marca": "Western Digital",
+        "categoria": "CCTV y Seguridad",
+        "categoriaSlug": "cctv",
+        "precio": 68900,
+        "stock": 38,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Disco duro de grado vigilancia, optimizado para grabacion continua 24\/7.",
+        "specs": {
+            "Uso": "Vigilancia 24\/7",
+            "Interfaz": "SATA III",
+            "Capacidad": "2 TB"
+        }
+    },
+    {
+        "sku": "CON-DENT-6",
+        "nombre": "Conector Dentado 6mm² (bolsa 20u)",
+        "marca": "Legrand",
+        "categoria": "Conectores y Terminales",
+        "categoriaSlug": "conectores",
+        "precio": 5900,
+        "stock": 150,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Conector de perforacion para empalme rapido sin necesidad de pelar el cable.",
+        "specs": {
+            "Uso": "Empalme rapido",
+            "Seccion": "6 mm²",
+            "Presentacion": "Bolsa 20 unidades"
+        }
+    },
+    {
+        "sku": "REG-BORNE-12",
+        "nombre": "Regleta de Bornes 12 Vias",
+        "marca": "Legrand",
+        "categoria": "Conectores y Terminales",
+        "categoriaSlug": "conectores",
+        "precio": 4290,
+        "stock": 210,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Regleta termoplastica para conexion de conductores en tableros de distribucion.",
+        "specs": {
+            "Vias": "12",
+            "Material": "Termoplastico",
+            "Corriente maxima": "20 A"
+        }
+    },
+    {
+        "sku": "TERMOC-10",
+        "nombre": "Termocontraible 10mm (paquete 20u)",
+        "marca": "3M",
+        "categoria": "Conectores y Terminales",
+        "categoriaSlug": "conectores",
+        "precio": 6900,
+        "stock": 175,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Manguito termocontraible para aislacion de empalmes electricos.",
+        "specs": {
+            "Diametro": "10 mm",
+            "Contraccion": "2:1",
+            "Presentacion": "Paquete 20 unidades"
+        }
+    },
+    {
+        "sku": "ENC-DOBLE-B",
+        "nombre": "Enchufe Doble Blanco con Tierra",
+        "marca": "Bticino",
+        "categoria": "Enchufes e Interruptores",
+        "categoriaSlug": "enchufes",
+        "precio": 5490,
+        "stock": 260,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Enchufe doble con puesta a tierra, linea residencial, color blanco.",
+        "specs": {
+            "Voltaje": "250 V",
+            "Amperaje": "16 A",
+            "Con tierra": "Si"
+        }
+    },
+    {
+        "sku": "INT-SIMPLE-B",
+        "nombre": "Interruptor Simple Blanco",
+        "marca": "Bticino",
+        "categoria": "Enchufes e Interruptores",
+        "categoriaSlug": "enchufes",
+        "precio": 2890,
+        "stock": 340,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Interruptor simple para encendido de un punto de luz, linea residencial.",
+        "specs": {
+            "Color": "Blanco",
+            "Voltaje": "250 V",
+            "Amperaje": "10 A"
+        }
+    },
+    {
+        "sku": "INT-CONM-B",
+        "nombre": "Interruptor Conmutado Blanco",
+        "marca": "Bticino",
+        "categoria": "Enchufes e Interruptores",
+        "categoriaSlug": "enchufes",
+        "precio": 3990,
+        "stock": 180,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Interruptor conmutado para control de un punto de luz desde dos ubicaciones.",
+        "specs": {
+            "Tipo": "Conmutado (via)",
+            "Voltaje": "250 V",
+            "Amperaje": "10 A"
+        }
+    },
+    {
+        "sku": "ENC-IND-IP67",
+        "nombre": "Enchufe Industrial IP67 16A",
+        "marca": "Legrand",
+        "categoria": "Enchufes e Interruptores",
+        "categoriaSlug": "enchufes",
+        "precio": 24900,
+        "stock": 45,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Enchufe industrial estanco para ambientes exigentes, alta resistencia al agua y polvo.",
+        "specs": {
+            "Uso": "Industrial\/exterior",
+            "Amperaje": "16 A",
+            "Proteccion": "IP67"
+        }
+    },
+    {
+        "sku": "AMP-LED-9W",
+        "nombre": "Ampolleta LED 9W Luz Calida",
+        "marca": "Philips",
+        "categoria": "Iluminacion",
+        "categoriaSlug": "iluminacion",
+        "precio": 2490,
+        "stock": 520,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Ampolleta LED de bajo consumo, equivalente a 60W incandescente, base E27.",
+        "specs": {
+            "Base": "E27",
+            "Potencia": "9 W",
+            "Temperatura de color": "3000K (calida)"
+        }
+    },
+    {
+        "sku": "TUBO-LED-18W",
+        "nombre": "Tubo LED 18W 1.2m",
+        "marca": "Philips",
+        "categoria": "Iluminacion",
+        "categoriaSlug": "iluminacion",
+        "precio": 6900,
+        "stock": 210,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Tubo LED T8 para reemplazo directo de tubos fluorescentes, sin necesidad de balasto.",
+        "specs": {
+            "Base": "T8\/G13",
+            "Largo": "1.2 m",
+            "Potencia": "18 W"
+        }
+    },
+    {
+        "sku": "PROY-LED-50W",
+        "nombre": "Proyector LED 50W Exterior",
+        "marca": "Philips",
+        "categoria": "Iluminacion",
+        "categoriaSlug": "iluminacion",
+        "precio": 32900,
+        "stock": 65,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Proyector LED para iluminacion exterior de fachadas, patios y estacionamientos.",
+        "specs": {
+            "Uso": "Exterior",
+            "Potencia": "50 W",
+            "Proteccion": "IP65"
+        }
+    },
+    {
+        "sku": "EQ-EMERG-LED",
+        "nombre": "Equipo de Emergencia LED Autonomo",
+        "marca": "Philips",
+        "categoria": "Iluminacion",
+        "categoriaSlug": "iluminacion",
+        "precio": 19900,
+        "stock": 80,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Luminaria de emergencia con bateria autonoma, activacion automatica ante corte de energia.",
+        "specs": {
+            "Uso": "Rutas de evacuacion",
+            "Autonomia": "2 horas",
+            "Activacion": "Automatica"
+        }
+    },
+    {
+        "sku": "TAL-PERC-20V",
+        "nombre": "Taladro Percutor 20V con Bateria",
+        "marca": "Bosch",
+        "categoria": "Herramientas",
+        "categoriaSlug": "herramientas",
+        "precio": 98000,
+        "stock": 25,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Taladro percutor inalambrico, incluye bateria 20V, cargador y maletin.",
+        "specs": {
+            "Incluye": "Bateria + cargador + maletin",
+            "Voltaje": "20 V",
+            "Funcion percutor": "Si"
+        }
+    },
+    {
+        "sku": "MULTIM-DIG",
+        "nombre": "Multimetro Digital Profesional",
+        "marca": "Fluke",
+        "categoria": "Herramientas",
+        "categoriaSlug": "herramientas",
+        "precio": 45900,
+        "stock": 40,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Multimetro digital con medicion de voltaje, corriente, resistencia y continuidad.",
+        "specs": {
+            "Pantalla": "Digital LCD",
+            "Mediciones": "V\/A\/Ω\/continuidad",
+            "Categoria de seguridad": "CAT III"
+        }
+    },
+    {
+        "sku": "PELACABLE-AUT",
+        "nombre": "Pelacables Automatico",
+        "marca": "Bosch",
+        "categoria": "Herramientas",
+        "categoriaSlug": "herramientas",
+        "precio": 15900,
+        "stock": 95,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Pelacables de ajuste automatico para conductores de 0.5 a 6mm².",
+        "specs": {
+            "Uso": "Conductores de cobre",
+            "Tipo": "Automatico",
+            "Rango": "0.5 - 6 mm²"
+        }
+    },
+    {
+        "sku": "GUANTE-DIEL-CL0",
+        "nombre": "Guantes Dielectricos Clase 0 (par)",
+        "marca": "3M",
+        "categoria": "Herramientas",
+        "categoriaSlug": "herramientas",
+        "precio": 28900,
+        "stock": 55,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Guantes de proteccion dielectrica para trabajos en baja tension, hasta 1000V.",
+        "specs": {
+            "Clase": "0",
+            "Presentacion": "Par",
+            "Tension maxima": "1000 V"
+        }
+    },
+    {
+        "sku": "TACO-FISCH-8",
+        "nombre": "Taco de Anclaje 8mm (caja 100u)",
+        "marca": "Fischer",
+        "categoria": "Ferreteria",
+        "categoriaSlug": "ferreteria",
+        "precio": 9900,
+        "stock": 260,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Taco de expansion para fijacion en concreto y muro solido.",
+        "specs": {
+            "Medida": "8 mm",
+            "Material": "Nylon",
+            "Presentacion": "Caja 100 unidades"
+        }
+    },
+    {
+        "sku": "BROCA-CONC-6",
+        "nombre": "Broca para Concreto 6mm (blister 5u)",
+        "marca": "Bosch",
+        "categoria": "Ferreteria",
+        "categoriaSlug": "ferreteria",
+        "precio": 4900,
+        "stock": 180,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Broca widia para perforacion de concreto y mamposteria.",
+        "specs": {
+            "Diametro": "6 mm",
+            "Presentacion": "Blister 5 unidades",
+            "Material punta": "Widia"
+        }
+    },
+    {
+        "sku": "CINTA-AISL-19",
+        "nombre": "Cinta Aislante Negra 19mm x 20m",
+        "marca": "3M",
+        "categoria": "Ferreteria",
+        "categoriaSlug": "ferreteria",
+        "precio": 1490,
+        "stock": 600,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Cinta aislante electrica de PVC, uso general en empalmes y reparaciones.",
+        "specs": {
+            "Ancho": "19 mm",
+            "Largo": "20 m",
+            "Material": "PVC"
+        }
+    },
+    {
+        "sku": "PAN-SOLAR-POLI-330",
+        "nombre": "Panel Solar Policristalino 330W",
+        "marca": "Jinko Solar",
+        "categoria": "Energias Renovables",
+        "categoriaSlug": "renovables",
+        "precio": 98000,
+        "stock": 50,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Panel solar policristalino, alternativa economica para instalaciones residenciales.",
+        "specs": {
+            "Garantia": "20 anos",
+            "Potencia": "330 W",
+            "Tecnologia": "Policristalino"
+        }
+    },
+    {
+        "sku": "CONECT-MC4",
+        "nombre": "Conector MC4 (par)",
+        "marca": "Staubli",
+        "categoria": "Energias Renovables",
+        "categoriaSlug": "renovables",
+        "precio": 3900,
+        "stock": 220,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Conector estanco para paneles solares, IP67, conexion rapida y segura.",
+        "specs": {
+            "Uso": "Interconexion de paneles",
+            "Proteccion": "IP67",
+            "Presentacion": "Par (macho + hembra)"
+        }
+    },
+    {
+        "sku": "REG-CARGA-30A",
+        "nombre": "Regulador de Carga Solar 30A",
+        "marca": "Victron Energy",
+        "categoria": "Energias Renovables",
+        "categoriaSlug": "renovables",
+        "precio": 56900,
+        "stock": 28,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Regulador PWM para sistemas fotovoltaicos aislados, protege la bateria de sobrecarga.",
+        "specs": {
+            "Tipo": "PWM",
+            "Voltaje sistema": "12\/24V auto",
+            "Corriente maxima": "30 A"
+        }
+    },
+    {
+        "sku": "INV-SOLAR-3KW",
+        "nombre": "Inversor Solar 3kW On-Grid",
+        "marca": "Growatt",
+        "categoria": "Energias Renovables",
+        "categoriaSlug": "renovables",
+        "precio": 385000,
+        "stock": 12,
+        "imagen": "assets\/img\/productos\/placeholder.svg",
+        "descripcion": "Inversor para conexion a red, transforma la energia DC de los paneles en AC utilizable.",
+        "specs": {
+            "Tipo": "On-Grid",
+            "Potencia": "3 kW",
+            "Eficiencia": "97.6%"
+        }
+    }
+];

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel Admin — Dreamlike Electricidad</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/panel.css">
+</head>
+<body>
+
+<header class="dl-header">
+  <div class="dl-header__in" style="justify-content:center">
+    <a class="dl-logo" href="../index.html" aria-label="Dreamlike Electricidad — inicio">
+      <img src="../assets/img/logo-oscuro.svg" alt="Dreamlike Electricidad">
+    </a>
+  </div>
+</header>
+
+<main class="dl-auth">
+  <div class="dl-auth__card">
+    <a class="dl-auth__volver" href="../index.html">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+      Volver a la tienda
+    </a>
+
+    <h1>Panel de administracion</h1>
+    <p class="dl-auth__sub">Acceso exclusivo para el equipo Dreamlike.</p>
+
+    <p class="dl-auth__aviso">
+      Acceso real contra la base de datos del panel. Usuario creado por
+      <code>db/seed.php</code> al desplegar — ver README para la password inicial.
+    </p>
+
+    <form id="formLoginAdmin" novalidate>
+      <div class="dl-campo">
+        <label for="email">Correo corporativo</label>
+        <input type="email" id="email" name="email" placeholder="nombre@dreamlike.cl" required>
+      </div>
+      <div class="dl-campo">
+        <label for="password">Contrasena</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" required minlength="1">
+      </div>
+      <p class="dl-auth__error" id="errorLogin">Ingresa tu correo para continuar.</p>
+      <button type="submit" class="dl-btn dl-btn--primario dl-btn--bloque">Entrar al panel</button>
+    </form>
+  </div>
+</main>
+
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/admin-login.js"></script>
+</body>
+</html>

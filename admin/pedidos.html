@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedidos — Panel Admin Dreamlike</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/panel.css">
+</head>
+<body>
+
+<header class="dl-header">
+  <div class="dl-header__in">
+    <button class="dl-hamburguesa" id="btnMenuMobile" aria-label="Abrir menu" aria-expanded="false">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="dl-logo" href="index.html" aria-label="Panel Admin Dreamlike">
+      <img src="../assets/img/logo-oscuro.svg" alt="Dreamlike Electricidad">
+    </a>
+    <div class="dl-acciones" style="margin-left:auto">
+      <a class="dl-cuenta" href="../index.html">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+        <span>Ver tienda</span>
+      </a>
+    </div>
+  </div>
+  <nav class="dl-nav" aria-label="Categorias de productos">
+    <div class="dl-nav__in">
+      <ul class="dl-nav__lista" id="megaLista"></ul>
+    </div>
+  </nav>
+</header>
+
+<div class="dl-panel">
+
+  <aside class="dl-panel__sidebar">
+    <div class="dl-panel__perfil">
+      <div class="dl-panel__avatar" id="avatarIniciales">--</div>
+      <div>
+        <strong id="sidebarNombre">Cargando…</strong>
+        <span id="sidebarEmail"></span>
+      </div>
+    </div>
+    <nav class="dl-panel__nav">
+      <a href="index.html">
+        <svg class="dl-ico" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Dashboard
+      </a>
+      <a href="productos.html">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M20.5 7.3 12 12l-8.5-4.7M12 22V12M21 16.5V7.5a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4a2 2 0 0 0-1 1.7v9a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7Z"/></svg>
+        Productos
+      </a>
+      <a href="pedidos.html" class="dl-activo">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M9 8h3"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+        Pedidos
+      </a>
+      <button class="dl-salir" id="btnCerrarSesion" type="button">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+        Cerrar sesion
+      </button>
+    </nav>
+  </aside>
+
+  <main class="dl-panel__main">
+    <h1>Pedidos</h1>
+
+    <div class="dl-panel__seccion">
+      <div class="dl-panel__acciones">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="dl-btn dl-btn--secundario dl-btn--sm dl-filtro-estado dl-activo" data-estado="">Todos</button>
+          <button class="dl-btn dl-btn--secundario dl-btn--sm dl-filtro-estado" data-estado="Pendiente de pago">Pendientes</button>
+          <button class="dl-btn dl-btn--secundario dl-btn--sm dl-filtro-estado" data-estado="En camino">En camino</button>
+          <button class="dl-btn dl-btn--secundario dl-btn--sm dl-filtro-estado" data-estado="Entregado">Entregados</button>
+        </div>
+      </div>
+      <div class="dl-tabla-wrap">
+        <table class="dl-tabla">
+          <thead>
+            <tr><th>N° pedido</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th>Total</th><th></th></tr>
+          </thead>
+          <tbody id="tablaPedidosAdmin"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/js/auth.js"></script>
+<script src="../assets/js/categorias-fallback.js"></script>
+<script src="../assets/js/mega-menu.js"></script>
+<script src="../assets/js/admin-comun.js"></script>
+<script src="../assets/js/admin-pedidos.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi cuenta — Dreamlike Electricidad</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/panel.css">
+</head>
+<body>
+
+<header class="dl-header">
+  <div class="dl-header__in">
+    <button class="dl-hamburguesa" id="btnMenuMobile" aria-label="Abrir menu" aria-expanded="false">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <a class="dl-logo" href="index.html" aria-label="Dreamlike Electricidad — inicio">
+      <img src="assets/img/logo-oscuro.svg" alt="Dreamlike Electricidad">
+    </a>
+    <div class="dl-acciones" style="margin-left:auto">
+      <a class="dl-cuenta" href="index.html">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+        <span>Volver a la tienda</span>
+      </a>
+    </div>
+  </div>
+  <nav class="dl-nav" aria-label="Categorias de productos">
+    <div class="dl-nav__in">
+      <ul class="dl-nav__lista" id="megaLista"></ul>
+    </div>
+  </nav>
+</header>
+
+<div class="dl-panel dl-panel--cuenta">
+
+  <!-- ============================= SIDEBAR ============================= -->
+  <aside class="dl-panel__sidebar">
+    <div class="dl-panel__perfil">
+      <div class="dl-panel__avatar" id="avatarIniciales">--</div>
+      <div>
+        <strong id="sidebarNombre">Cargando…</strong>
+        <span id="sidebarEmail"></span>
+      </div>
+    </div>
+    <nav class="dl-panel__nav">
+      <a href="#escritorio" class="dl-activo" data-tab="escritorio">
+        <svg class="dl-ico" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg>
+        Escritorio
+      </a>
+      <a href="#pedidos" data-tab="pedidos">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M9 8h3"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+        Pedidos
+      </a>
+      <a href="#descargas" data-tab="descargas">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
+        Descargas
+      </a>
+      <a href="#direcciones" data-tab="direcciones">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        Direcciones
+      </a>
+      <a href="#detalles" data-tab="detalles">
+        <svg class="dl-ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        Detalles de la cuenta
+      </a>
+      <button class="dl-salir" id="btnCerrarSesion" type="button">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>
+        Cerrar sesion
+      </button>
+    </nav>
+  </aside>
+
+  <!-- ============================= CONTENIDO ============================= -->
+  <main class="dl-panel__main">
+
+    <section id="tabEscritorio" class="dl-tab-panel">
+      <div class="dl-cuenta-bienvenida">
+        <p class="dl-cuenta-bienvenida__eyebrow">Mi cuenta</p>
+        <h1 id="tituloBienvenida">Hola</h1>
+        <p>Desde aquí puedes revisar tus pedidos, gestionar tus direcciones de despacho y actualizar los detalles de tu cuenta.</p>
+      </div>
+      <div class="dl-cuenta-accesos" aria-label="Accesos rápidos">
+        <a href="#pedidos" data-acceso-tab="pedidos">
+          <svg class="dl-ico" viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M9 8h3"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg>
+          <span><strong>Pedidos</strong><small>Revisa tus compras y cotizaciones</small></span>
+        </a>
+        <a href="#direcciones" data-acceso-tab="direcciones">
+          <svg class="dl-ico" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span><strong>Direcciones</strong><small>Administra tus datos de despacho</small></span>
+        </a>
+        <a href="#detalles" data-acceso-tab="detalles">
+          <svg class="dl-ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          <span><strong>Datos de cuenta</strong><small>Actualiza tu información personal</small></span>
+        </a>
+      </div>
+    </section>
+
+    <section id="tabPedidos" class="dl-tab-panel" hidden>
+      <div class="dl-panel__encabezado">
+        <div><p class="dl-panel__eyebrow">Historial</p><h1>Pedidos</h1></div>
+        <a class="dl-btn dl-btn--primario dl-btn--sm" href="index.html">Explorar productos</a>
+      </div>
+      <div class="dl-panel__seccion">
+        <div class="dl-tabla-wrap">
+          <table class="dl-tabla">
+            <thead>
+              <tr><th>N° pedido</th><th>Fecha</th><th>Estado</th><th>Items</th><th>Total</th></tr>
+            </thead>
+            <tbody id="tablaPedidos"></tbody>
+          </table>
+        </div>
+        <div class="dl-panel__vacio" id="sinPedidos" hidden>
+          <p>No se ha hecho ningún pedido todavía.</p>
+          <a class="dl-btn dl-btn--primario dl-btn--sm" href="index.html">Explorar productos</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tabDescargas" class="dl-tab-panel" hidden>
+      <div class="dl-panel__encabezado"><div><p class="dl-panel__eyebrow">Documentos</p><h1>Descargas</h1></div></div>
+      <div class="dl-panel__seccion dl-panel__vacio">
+        <p>No hay descargas disponibles todavía.</p>
+        <a class="dl-btn dl-btn--primario dl-btn--sm" href="index.html">Explorar productos</a>
+      </div>
+    </section>
+
+    <section id="tabDirecciones" class="dl-tab-panel" hidden>
+      <div class="dl-panel__encabezado"><div><p class="dl-panel__eyebrow">Despacho</p><h1>Direcciones</h1></div></div>
+      <div class="dl-direcciones-intro">
+        <p>Las siguientes direcciones se utilizarán por defecto en la página de pago.</p>
+      </div>
+      <div class="dl-direcciones-tipos">
+        <article class="dl-direccion-tipo">
+          <h2>Dirección de facturación</h2>
+          <div id="direccionFacturacion"></div>
+        </article>
+        <article class="dl-direccion-tipo">
+          <h2>Dirección de envío</h2>
+          <div id="direccionEnvio"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tabDetalles" class="dl-tab-panel" hidden>
+      <div class="dl-panel__encabezado"><div><p class="dl-panel__eyebrow">Configuración</p><h1>Detalles de la cuenta</h1></div></div>
+      <div class="dl-panel__seccion">
+        <h2>Datos personales</h2>
+        <form id="formPerfil">
+          <div class="dl-form-grid">
+            <div class="dl-campo">
+              <label for="pNombre">Nombre <span aria-hidden="true">*</span></label>
+              <input type="text" id="pNombre" autocomplete="given-name" required>
+            </div>
+            <div class="dl-campo">
+              <label for="pApellido">Apellidos <span aria-hidden="true">*</span></label>
+              <input type="text" id="pApellido" autocomplete="family-name" required>
+            </div>
+          </div>
+          <div class="dl-campo">
+            <label for="pNombreVisible">Nombre visible <span aria-hidden="true">*</span></label>
+            <input type="text" id="pNombreVisible" autocomplete="nickname" required>
+            <p class="dl-campo__ayuda">Así se mostrará tu nombre en tu cuenta y en tus valoraciones.</p>
+          </div>
+          <div class="dl-campo">
+            <label for="pEmail">Dirección de correo electrónico <span aria-hidden="true">*</span></label>
+            <input type="email" id="pEmail" autocomplete="email" required>
+          </div>
+          <fieldset class="dl-cambio-clave">
+            <legend>Cambio de contraseña</legend>
+            <div class="dl-campo">
+              <label for="pPasswordActual">Contraseña actual <span class="dl-campo__opcional">(déjala en blanco para no cambiarla)</span></label>
+              <input type="password" id="pPasswordActual" autocomplete="current-password">
+            </div>
+            <div class="dl-campo">
+              <label for="pPasswordNueva">Nueva contraseña <span class="dl-campo__opcional">(déjala en blanco para no cambiarla)</span></label>
+              <input type="password" id="pPasswordNueva" autocomplete="new-password">
+            </div>
+            <div class="dl-campo">
+              <label for="pPasswordConfirmar">Confirmar nueva contraseña <span class="dl-campo__opcional">(déjala en blanco para no cambiarla)</span></label>
+              <input type="password" id="pPasswordConfirmar" autocomplete="new-password">
+            </div>
+          </fieldset>
+          <button type="submit" class="dl-btn dl-btn--primario">Guardar cambios</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/categorias-fallback.js"></script>
+<script src="assets/js/mega-menu.js"></script>
+<script src="assets/js/mi-cuenta.js"></script>
+<script src="assets/js/whatsapp-flotante.js"></script>
+</body>
+</html>

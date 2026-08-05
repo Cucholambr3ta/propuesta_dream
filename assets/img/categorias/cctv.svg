@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" role="img" aria-label="Categoria Camara IP 4MP">
+  <rect width="220" height="220" fill="#FDF0E7"/>
+  <rect x="1" y="1" width="218" height="218" fill="none" stroke="#FBDCC4" stroke-width="2"/>
+  <g stroke="#C2410C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <rect x="20" y="70" width="90" height="65" rx="12"/><path d="m110 90 40-20v65l-40-20"/>
+  </g>
+</svg>

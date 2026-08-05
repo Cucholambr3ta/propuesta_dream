@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Categoria — Dreamlike Electricidad</title>
+<meta name="description" content="Productos por categoria en Dreamlike Electricidad.">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/panel.css">
+</head>
+<body>
+
+<!-- ============================= TOPBAR ============================= -->
+<div class="dl-topbar">
+  <div class="dl-topbar__in">
+    <a class="dl-topbar__item dl-topbar__item--dir" href="https://maps.google.com/?q=Av.+El+Ventisquero+1225+Bod.+49,+Renca" target="_blank" rel="noopener">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      Av. El Ventisquero 1225 Bod. 49, Renca
+    </a>
+    <a class="dl-topbar__item" href="mailto:ventasweb@dreamlike.cl">
+      <svg class="dl-ico" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      ventasweb@dreamlike.cl
+    </a>
+    <a class="dl-topbar__item" href="https://wa.me/56933713900" target="_blank" rel="noopener">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20l1.05-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+      +56933713900
+    </a>
+    <span class="dl-topbar__item dl-topbar__item--horario">
+      <svg class="dl-ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      Lun-Vie 8:30-17:00 · Envios a todo Chile
+    </span>
+  </div>
+</div>
+
+<!-- ============================= HEADER ============================= -->
+<header class="dl-header">
+  <div class="dl-header__in">
+    <button class="dl-hamburguesa" id="btnMenuMobile" aria-label="Abrir menu" aria-expanded="false">
+      <svg class="dl-ico" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+
+    <a class="dl-logo" href="index.html" aria-label="Dreamlike Electricidad — inicio">
+      <img src="assets/img/logo-oscuro.svg" alt="Dreamlike Electricidad">
+    </a>
+
+    <form class="dl-buscador" action="index.html" method="get" role="search">
+      <svg class="dl-buscador__ico dl-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="search" name="q" placeholder="Buscar en Dreamlike..." aria-label="Buscar productos">
+    </form>
+
+    <div class="dl-acciones">
+      <a class="dl-cuenta" id="headerCuenta" href="login.html" aria-label="Iniciar sesion">
+        <svg class="dl-ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <span>Iniciar Sesion</span>
+      </a>
+      <a class="dl-carrito" href="carrito.html" aria-label="Ver carrito">
+        <svg class="dl-ico" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1.2"/><circle cx="18" cy="21" r="1.2"/><path d="M2 3h3l2.6 12.4A2 2 0 0 0 9.5 17H18a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+        <span class="dl-carrito__n" id="carritoContador">0</span>
+      </a>
+    </div>
+  </div>
+
+  <nav class="dl-nav" aria-label="Categorias de productos">
+    <div class="dl-nav__in">
+      <ul class="dl-nav__lista" id="megaLista"></ul>
+    </div>
+  </nav>
+</header>
+
+<main class="dl-wrap">
+
+  <!-- ============================= BREADCRUMB ============================= -->
+  <nav class="dl-breadcrumb" aria-label="Miga de pan">
+    <a href="index.html">Inicio</a><span>›</span>
+    <span id="breadcrumbCategoria">Categoria</span>
+  </nav>
+
+  <!-- ============================= BANNER DE CATEGORIA ============================= -->
+  <!-- Imagen de fondo pintada por categoria.js desde el campo "banner" de
+       categorias.json (editable ahi, mismo criterio que el resto del catalogo) -->
+  <div class="dl-categoria-banner" id="categoriaBanner">
+    <h1 id="categoriaTitulo">Categoria</h1>
+    <p id="categoriaContador">Cargando productos…</p>
+  </div>
+
+  <!-- ============================= GRID DE PRODUCTOS ============================= -->
+  <section class="dl-seccion" style="padding-top:0">
+    <div class="dl-grid" id="gridCategoria"></div>
+
+    <!-- Estado sin productos (categoria real, pero el catalogo demo no tiene SKUs ahi) -->
+    <div class="dl-panel__seccion" id="categoriaVacia" style="text-align:center;padding:60px 24px" hidden>
+      <svg class="dl-ico" viewBox="0 0 24 24" style="width:48px;height:48px;color:var(--dl-gris-borde);margin:0 auto 16px"><path d="M20.5 7.3 12 12l-8.5-4.7M12 22V12M21 16.5V7.5a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4a2 2 0 0 0-1 1.7v9a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7Z"/></svg>
+      <h2>Aun no hay productos cargados en esta categoria</h2>
+      <p style="color:var(--dl-gris-suave);margin-bottom:22px">
+        Catalogo de demostracion — cotiza directo y te confirmamos disponibilidad real.
+      </p>
+      <a class="dl-btn dl-btn--wsp" href="https://wa.me/56933713900" target="_blank" rel="noopener">
+        <svg class="dl-ico" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20l1.05-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+        Cotizar por WhatsApp
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================= FOOTER ============================= -->
+<footer class="dl-footer">
+  <div class="dl-wrap">
+    <div class="dl-footer__grid">
+      <div>
+        <h3>Categorias</h3>
+        <ul>
+          <li><a href="categoria.html?slug=conductores">Conductores</a></li>
+          <li><a href="categoria.html?slug=canalizacion">Canalizacion</a></li>
+          <li><a href="categoria.html?slug=automatizacion">Automatizacion y Control</a></li>
+          <li><a href="categoria.html?slug=cctv">CCTV y Seguridad</a></li>
+          <li><a href="categoria.html?slug=iluminacion">Iluminacion</a></li>
+          <li><a href="categoria.html?slug=herramientas">Herramientas</a></li>
+          <li><a href="categoria.html?slug=ferreteria">Ferreteria</a></li>
+          <li><a href="categoria.html?slug=renovables">Energias Renovables</a></li>
+          <li><a href="categoria.html?slug=conectores">Conectores y Terminales</a></li>
+          <li><a href="categoria.html?slug=enchufes">Enchufes e Interruptores</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Empresa</h3>
+        <ul>
+          <li><a href="#">Sobre Dreamlike</a></li>
+          <li><a href="#">Terminos y condiciones</a></li>
+          <li><a href="#">Politica de despacho</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>
+            <button class="dl-footer__mapa-trigger" type="button">
+              <svg class="dl-ico" viewBox="0 0 24 24" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Av. El Ventisquero 1225 Bod. 49, Renca
+            </button>
+          </li>
+          <li><a href="mailto:ventasweb@dreamlike.cl">ventasweb@dreamlike.cl</a></li>
+          <li><a href="https://wa.me/56933713900" target="_blank" rel="noopener">+56 9 3371 3900</a></li>
+          <li>Lun-Vie 8:30-17:00</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Redes</h3>
+        <ul>
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="dl-footer__legal">
+      © 2026 Dreamlike Electricidad. Prototipo de sitio — catalogo de demostracion.
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/carrito.js"></script>
+<script src="assets/js/auth-modal.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/categorias-fallback.js"></script>
+<script src="assets/js/mega-menu.js"></script>
+<script src="assets/js/productos-fallback.js"></script>
+<script src="assets/js/buscador.js"></script>
+<script src="assets/js/categoria.js"></script>
+<script src="assets/js/carrito-drawer.js"></script>
+<script src="assets/js/mapa-modal.js"></script>
+<script src="assets/js/whatsapp-flotante.js"></script>
+</body>
+</html>
